@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 class="text-center">PETS LISTING</h1>
+  <%= @pets.each do |pet| %>
+    <p><%= pet.name %></p>
+    <p><%= pet.specie %></p>
+    <p><%= pet.weight %></p>
+    <p><%= pet.breed %></p>
+    <p><%= pet.dob %></p>
+  <% end %>
+</div>
