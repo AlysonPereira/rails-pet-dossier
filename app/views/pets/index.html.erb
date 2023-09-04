@@ -1,6 +1,7 @@
 <div class="container">
   <h1 class="text-center">PETS LISTING</h1>
-  <%= @pets.each do |pet| %>
+  <%= link_to 'Add a pet', new_pet_path, class:'btn btn-sm btn-primary' %>
+  <% @pets.each do |pet| %>
     <p><%= pet.name %></p>
     <p><%= pet.specie %></p>
     <p><%= pet.weight %></p>
