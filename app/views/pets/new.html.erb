@@ -1,0 +1,13 @@
+<div class="container w-50">
+    <div class="col-12">
+      <h2 class="text-center my-5">New Pet</h2>
+      <%= simple_form_for(@pet) do |f| %>
+        <div class="row"><%= f.input :name, placeholder: "Enter pet name" %></div>
+        <div class="row"><%= f. :specie, :category, collection: Pet::SPECIE, prompt: "Select a category" %></div>
+        <div class="row"><%= f.input :breed, placeholder: "Enter breed name" %></div>
+        <div class="row"><%= f.input :dob, placeholder: "Enter date of birth" %></div>
+        <div class="row"><%= f.input :weight, placeholder: "Enter weight" %></div>
+        <%= f.submit%>
+      <% end %>
+    </div>
+  </div>
