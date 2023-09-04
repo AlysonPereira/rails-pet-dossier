@@ -10,21 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_164533) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_181441) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dossiers", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_dossiers_on_pet_id"
+  end
 
   create_table "medicines", force: :cascade do |t|
     t.string "name"
     t.float "dosage"
-    t.string "unit"
     t.integer "period"
+    t.string "unit"
     t.date "start_date"
     t.date "end_date"
-    t.bigint "pet_id", null: false
+    t.bigint "dossier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["pet_id"], name: "index_medicines_on_pet_id"
+    t.index ["dossier_id"], name: "index_medicines_on_dossier_id"
   end
 
   create_table "pets", force: :cascade do |t|
@@ -62,6 +69,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_164533) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vaccines", force: :cascade do |t|
+    t.string "name"
+    t.date "vaccination_date"
+    t.date "next_vaccination"
+    t.bigint "dossier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dossier_id"], name: "index_vaccines_on_dossier_id"
+  end
+
   create_table "wish_lists", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -70,8 +87,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_164533) do
     t.index ["user_id"], name: "index_wish_lists_on_user_id"
   end
 
-  add_foreign_key "medicines", "pets"
+  add_foreign_key "dossiers", "pets"
+  add_foreign_key "medicines", "dossiers"
   add_foreign_key "pets", "users"
   add_foreign_key "products", "wish_lists"
+  add_foreign_key "vaccines", "dossiers"
   add_foreign_key "wish_lists", "users"
 end
