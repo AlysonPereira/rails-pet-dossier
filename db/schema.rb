@@ -10,9 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_153523) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_164533) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "medicines", force: :cascade do |t|
+    t.string "name"
+    t.float "dosage"
+    t.string "unit"
+    t.integer "period"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "pet_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_medicines_on_pet_id"
+  end
+
+  create_table "pets", force: :cascade do |t|
+    t.string "name"
+    t.string "specie"
+    t.string "breed"
+    t.date "dob"
+    t.float "weight"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pets_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.float "price"
+    t.string "url"
+    t.string "local"
+    t.bigint "wish_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["wish_list_id"], name: "index_products_on_wish_list_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +62,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_153523) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wish_lists", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_wish_lists_on_user_id"
+  end
+
+  add_foreign_key "medicines", "pets"
+  add_foreign_key "pets", "users"
+  add_foreign_key "products", "wish_lists"
+  add_foreign_key "wish_lists", "users"
 end
