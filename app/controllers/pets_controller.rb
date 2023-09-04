@@ -1,9 +1,8 @@
 class PetsController < ApplicationController
-
-   def index
+  def index
     @pets = Pet.all
   end
-  
+
   def new
     @pet = Pet.new
   end
@@ -16,13 +15,14 @@ class PetsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
   def show
     @pet = Pet.find(params[:id])
   end
-  
+
   private
 
   def pet_params
     params.require(:pet).permit(:name, :specie, :breed, :weight)
+  end
 end
