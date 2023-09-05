@@ -1,4 +1,6 @@
 <div class="container">
   <h1><%= @wishlist.title %></h1>
     <%= link_to 'Back', wish_lists_path %>
+    <%= link_to 'Delete', wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
+    <%= link_to 'Edit', edit_wish_list_path(@wishlist)%>
 </div>
