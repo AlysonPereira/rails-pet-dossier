@@ -1,10 +1,9 @@
 class Pet < ApplicationRecord
   belongs_to :user
-  has_one :dossier
 
   SPECIE = %w[Cat Dog Bird Turtle Fish Snake]
-  has_many :medicines, through: :dossier
-  has_many :vaccines, through: :dossier
+  has_many :medicines
+  has_many :vaccines
   validates :name, presence: true
   validates :specie, presence: true
 end

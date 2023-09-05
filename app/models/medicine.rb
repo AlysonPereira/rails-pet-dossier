@@ -1,5 +1,5 @@
 class Medicine < ApplicationRecord
-  belongs_to :dossier
+  belongs_to :pet
   validates :name, presence: true
   validates :dosage, presence: true
   validates :period, presence: true

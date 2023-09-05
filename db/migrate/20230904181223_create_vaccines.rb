@@ -4,7 +4,7 @@ class CreateVaccines < ActiveRecord::Migration[7.0]
       t.string :name
       t.date :vaccination_date
       t.date :next_vaccination
-      t.references :dossier, null: false, foreign_key: true
+      t.references :pet, null: false, foreign_key: true
 
       t.timestamps
     end

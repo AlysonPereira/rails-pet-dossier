@@ -1,5 +1,5 @@
 class MedicinesController < ApplicationController
-  before_action :set_dossier
+  before_action :set_pet
 
   def new
     @medicine = Medicine.new
@@ -12,10 +12,10 @@ class MedicinesController < ApplicationController
   private
 
   def medicine_params
-    params.require(:medicine).permit(:name, :dosage, :period, :unit, :start_date, :end_date, :dossier_id)
+    params.require(:medicine).permit(:name, :dosage, :period, :unit, :start_date, :end_date, :pet_id)
   end
 
-  def set_dossier
-    @dossier = Dossier.find(:dossier_id)
+  def set_pet
+    @pet = Pet.find(:pet_id)
   end
 end

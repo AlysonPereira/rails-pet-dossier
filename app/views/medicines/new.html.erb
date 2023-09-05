@@ -1,0 +1,14 @@
+<%= simple_form_for @medicine do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, label: 'Nome do Medicamento' %>
+    <%= f.input :dosage, label: 'Dosage' %>
+    <%= f.input :period, label: 'Period' %>
+    <%= f.input :unit, label: 'Unit' %>
+    <%= f.input :start_date, label: 'Start Date', as: :date_picker %>
+    <%= f.input :end_date, label: 'End Date', as: :date_picker %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>

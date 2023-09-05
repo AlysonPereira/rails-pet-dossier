@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :wish_lists
-  resources :pets, only: %i[index new create edit update destroy] do 
-    resources :dossiers do
-      resources :medicines, only: [:new, :create]
-      resources :vaccines, only: [:new, :create]
-    end
+  resources :pets do
+    resources :medicines, only: [:new, :create]
+    resources :vaccines, only: [:new, :create]
   end
 end
