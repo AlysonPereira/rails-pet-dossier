@@ -1,5 +1,5 @@
 class MedicinesController < ApplicationController
-  before_action :set_pet
+  before_action :set_pet, only: %i[new create destroy]
 
   def new
     @medicine = Medicine.new
@@ -12,10 +12,10 @@ class MedicinesController < ApplicationController
   private
 
   def medicine_params
-    params.require(:medicine).permit(:name, :dosage, :period, :unit, :start_date, :end_date, :pet_id)
+    params.require(:medicine).permit(:name, :dosage, :period, :unit, :start_date, :end_date)
   end
 
   def set_pet
-    @pet = Pet.find(:pet_id)
+    @pet = Pet.find(params[:pet_id])
   end
 end

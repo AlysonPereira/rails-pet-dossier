@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :wish_lists
   resources :pets do
-    resources :medicines, only: [:new, :create]
-    resources :vaccines, only: [:new, :create]
+    resources :medicines, only: %i[new create]
+    resources :vaccines, only: %i[new create]
   end
 end

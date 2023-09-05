@@ -1,15 +1,24 @@
-<div class="container mt-4">
+<div class="container mt-2">
   <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h1><%= @pet.name %></h1>
-          <h5 class="card-title">Informações do Pet</h5>
-          <p class="card-text">Espécie: <%= @pet.specie %></p>
-          <p class="card-text">Raça: <%= @pet.breed %></p>
-          <p class="card-text">Peso: <%= @pet.weight %> kg</p>
-          <p class="card-text">Idade: <%= @pet.dob %></p>
-          <%= link_to 'Voltar', pets_path, class: 'btn btn-primary' %>
-        </div>
+    <h1 class="text-center"><%= @pet.name %></h1>
+    <div class="col-5">
+      <%= image_tag 'pet-placeholder.png', class:"img-fluid border border-5" %>
+    </div>
+    <div class="col-7">
+      <p class="my-2">Species: <strong><%= @pet.specie %></strong></p>
+      <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
+      <p class="my-2">Weight: <strong><%= @pet.weight %></strong> kgs</p>
+      <% age = ((Time.zone.now - @pet.dob.to_time) / 1.year.seconds).floor %>
+      <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
+      <p class="my-2">Next Vaccine:</p>
+      <p class="my-2">Next Medicine:</p>
+    </div>
+    <div class="row">
+      <div class="d-grid gap-2">
+        <%= link_to 'Add a medicine', new_pet_medicine_path(@pet), class: 'btn btn-primary' %>
+        <%= link_to 'Add a vaccine', new_pet_vaccine_path(@pet), class: 'btn btn-primary' %>
+        <%= link_to 'Go back', pets_path, class: 'btn btn-secondary' %>
       </div>
     </div>
+   </div>
+</div>
