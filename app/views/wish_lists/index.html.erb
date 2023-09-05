@@ -1,9 +1,19 @@
 <div class="container">
-  <h1 class="text-center">Wish Lists</h1>
-  <%= link_to 'Add a wish list', new_wish_list_path, class:'btn btn-sm btn-primary' %>
-  <% @wishlists.each do |wishlist| %>
-    <%= link_to wish_list_path(wishlist) do %>
-      <p><%= wishlist.title %></p>
+  <h1 class="text-center mt-4">Wish Lists</h1>
+  <div class="d-flex justify-content-center">
+    <%= link_to new_wish_list_path, class: 'btn btn-success mt-3 mb-3' do %>
+      <i class="fas fa-plus"></i> Wish list
     <% end %>
-  <% end %>
+  </div>
+  <div class="row">
+    <% @wishlists.each do |wishlist| %>
+      <div class="col-12 mb-3">
+        <%= link_to wish_list_path(wishlist), class: 'list-group-item list-group-item-action' do %>
+          <strong>
+            <p class="mb-0"><%= wishlist.title %></p>
+          </strong>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
