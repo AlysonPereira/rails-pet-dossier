@@ -1,9 +1,19 @@
-<div class="container w-50">
-    <div class="col-12">
-      <h2 class="text-center my-5">Edit Wish List</h2>
-      <%= simple_form_for(@wishlist) do |f| %>
-        <div class="row"><%= f.input :title %></div>
-        <%= f.submit%>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h2 class="text-center mb-5">Edit Wish List</h2>
+      <%= simple_form_for(@wishlist, html: { class: 'form-horizontal' }) do |f| %>
+        <div class="form-group row">
+          <%= f.label :title, class: 'col-form-label col-md-2' %>
+          <div class="col-md-10">
+            <%= f.input_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-10 offset-md-2">
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

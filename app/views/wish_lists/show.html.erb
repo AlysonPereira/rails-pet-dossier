@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container mt-5">
   <h1><%= @wishlist.title %></h1>
-    <%= link_to 'Back', wish_lists_path %>
-    <%= link_to 'Delete', wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>
-    <%= link_to 'Edit', edit_wish_list_path(@wishlist)%>
+  <div class="btn-group mt-3">
+    <%= link_to 'Back', wish_lists_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Delete', wish_list_path(@wishlist), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+    <%= link_to 'Edit', edit_wish_list_path(@wishlist), class: 'btn btn-primary' %>
+  </div>
 </div>
