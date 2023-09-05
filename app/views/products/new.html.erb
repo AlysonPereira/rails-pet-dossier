@@ -1,0 +1,9 @@
+<div class="container"><h2>Add Products</h2></div>
+
+<div class="container">
+  <%= simple_form_for [@wishlist, @product] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :price %>
+    <%= f.input :local %>
+    <%= f.submit class: 'btn btn-sm btn-success' %>
+<% end %>
