@@ -12,7 +12,7 @@ class WishListsController < ApplicationController
   def create
     @wishlist = WishList.new(wishlist_params)
     @wishlist.user = current_user
-    if @wishlist.save
+    if @wishlist.save!
       redirect_to wish_list_path(@wishlist)
     else
       render :new, status: :unprocessable_entity
@@ -32,7 +32,7 @@ class WishListsController < ApplicationController
     @wishlist.destroy
     redirect_to wish_lists_path
   end
-
+  
   private
 
   def set_wishlist

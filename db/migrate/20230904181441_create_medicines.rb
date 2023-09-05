@@ -7,7 +7,7 @@ class CreateMedicines < ActiveRecord::Migration[7.0]
       t.string :unit
       t.date :start_date
       t.date :end_date
-      t.references :dossier, null: false, foreign_key: true
+      t.references :pet, null: false, foreign_key: true
 
       t.timestamps
     end

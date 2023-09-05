@@ -3,15 +3,15 @@
   <%= simple_form_for(@pet) do |f| %>
     <div class="row">
       <div class="col-12">
-        <%= f.input :name, placeholder: "Pet name" %>
+        <%= f.input :name, disabled: true %>
       </div>
     </div>
     <div class="row">
       <div class="col-4">
-        <%= f.input :specie, collection: Pet::SPECIE %>
+        <%= f.input :specie, disabled: true %>
       </div>
       <div class="col-8">
-        <%= f.input :breed, placeholder: "Breed" %>
+        <%= f.input :breed, disabled: true %>
       </div>
     </div>
     <div class="row">
@@ -20,9 +20,7 @@
       </div>
       <div class="col-8">
         <%= f.label :dob, "Date of birth (dd/mm/yyyy)", class:"mb-2" %>
-        <%= f.input :dob, label: false, as: :date, start_year: Date.today.year - 50,
-                              end_year: Date.today.year, order: [:day, :month, :year],
-                              placeholder: "Date of birth" %>
+        <%= f.input :dob, label: false, disabled: true %>
       </div>
     </div>
     <div class="row">
