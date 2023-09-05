@@ -1,0 +1,7 @@
+<div class="container">
+  <h1 class="text-center">Wish Lists</h1>
+  <%= link_to 'Add a wish list', new_wish_list_path, class:'btn btn-sm btn-primary' %>
+  <% @wishlists.each do |wishlist| %>
+    <p><%= wishlist.title %></p>
+  <% end %>
+</div>
