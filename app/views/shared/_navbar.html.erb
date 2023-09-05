@@ -9,26 +9,26 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto gap-1">
         <% if user_signed_in? %>
-          <li class="nav-item active">
+          <li class="text-navbar nav-item active">
             <%= link_to "Home", "/", class: "dropdown-item text-center" %>
           </li>
-          <li class="nav-item">
+          <li class="text-navbar nav-item">
             <%= link_to "Pets", pets_path, class: "dropdown-item text-center" %>
           </li>
-          <li class="nav-item">
+          <li class="text-navbar nav-item">
             <%= link_to "Wishlists", wish_lists_path, class: "dropdown-item text-center" %>
           </li>
-          <li class="nav-item">
+          <li class="text-navbar nav-item">
             <%= link_to "Find a Petshop", root_path, class: "dropdown-item text-center" %>
           </li>
-          <li class="nav-item">
+          <li class="text-navbar nav-item">
             <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-center" %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path, class: "text-navbar nav-link" %>
           </li>
         <% end %>
       </ul>
