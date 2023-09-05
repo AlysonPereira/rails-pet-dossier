@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   resources :wish_lists
   resources :pets do
+    
     resources :medicines, only: [:new, :create]
     resources :vaccines, only: [:new, :create]
   end
+  get 'dossier', to: "pages#dossier"
 end

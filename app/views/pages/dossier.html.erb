@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>Pets Dossier</h1>
+
+  <h3>Vaccines:</h3>
+  <ul>
+    <% @vaccines.each do |vaccine| %>
+    <% pet = Pet.find(vaccine.pet_id) %>
+      <li><%= pet.name %></li>
+      <li><%= vaccine.name %></li>
+      <li><%= vaccine.vaccination_date %></li>
+      <li><%= vaccine.next_vaccination %></li>
+    <% end %>
+  </ul>
+
+  <h3>Medicines:</h3>
+  <ul>
+    <% @medicines.each do |medicine| %>
+    <% pet = Pet.find(medicine.pet_id) %>
+      <li><%= pet.name %></li>
+      <li><%= medicine.name %></li>
+      <li><%= medicine.dosage %></li>
+      <li><%= medicine.period %></li>
+      <li><%= medicine.unite %></li>
+      <li><%= medicine.start_date %></li>
+      <li><%= medicine.end_date %></li>
+    <% end %>
+  </ul>
+
+</div>
