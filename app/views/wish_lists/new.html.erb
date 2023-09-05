@@ -1,0 +1,10 @@
+<div class="container w-50">
+    <div class="col-12">
+      <h2 class="text-center my-5">New Wish List</h2>
+      <%= simple_form_for(@wishlist) do |f| %>
+        <div class="row"><%= f.input :title %></div>
+        <%= f.submit%>
+      <% end %>
+    </div>
+  </div>
+</div>
