@@ -1,14 +1,36 @@
-<%= simple_form_for @medicine do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name, label: 'Nome do Medicamento' %>
-    <%= f.input :dosage, label: 'Dosage' %>
-    <%= f.input :period, label: 'Period' %>
-    <%= f.input :unit, label: 'Unit' %>
-    <%= f.input :start_date, label: 'Start Date', as: :date_picker %>
-    <%= f.input :end_date, label: 'End Date', as: :date_picker %>
-  </div>
+<div class="container">
+  <%= simple_form_for [@pet, @medicine] do |f| %>
+    <div class="row mt-2">
+      <div class="col-12">
+        <h2 class="text-center">Add Medicine</h2>
+        <%= f.input :name, label: 'Medicine Name' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :dosage, label: 'Dosage' %>
+      </div>
+      <div class="col-6">
+        <%= f.input :unit, label: 'Unit' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <%= f.input :start_date, html5: true, label: 'Start Date' %>
+      </div>
+      <div class="col-6">
+        <%= f.input :end_date, html5: true, label: 'End Date' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <%= f.input :period, label: 'Period' %>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="d-grid gap-2">
+      <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
+      <%= link_to 'Go back', pets_path, class:'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

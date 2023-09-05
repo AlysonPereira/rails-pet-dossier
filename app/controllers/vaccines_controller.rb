@@ -1,5 +1,5 @@
 class VaccinesController < ApplicationController
-  before_action :set_pet
+  before_action :set_pet, only: %i[new create destroy]
 
   def new
     @vaccine = Vaccine.new
@@ -12,10 +12,10 @@ class VaccinesController < ApplicationController
   private
 
   def vaccine_params
-    params.require(:vaccine).permit(:name, :vaccination_date, :next_vaccination, :pet_id)
+    params.require(:vaccine).permit(:name, :vaccination_date, :next_vaccination)
   end
 
   def set_pet
-    @pet = Pet.find([:pet_id])
+    @pet = Pet.find(params[:pet_id])
   end
 end

@@ -1,11 +1,23 @@
-<%= simple_form_for @vaccine do |f| %>
-  <div class="form-inputs">
-    <%= f.input :name, label: 'Name' %>
-    <%= f.input :vaccination_date, label: 'Vaccination Date', as: :date_picker %>
-    <%= f.input :next_vaccination, label: 'Next Vaccination', as: :date_picker %>
-  </div>
+<div class="container">
+  <%= simple_form_for [@pet, @vaccine] do |f| %>
+    <div class="row mt-2">
+      <div class="col-12">
+        <h2 class="text-center">Add Vaccine</h2>
+        <%= f.input :name, label: 'Name' %>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <%= f.input :vaccination_date, html5: :true, label: 'Vaccination Date' %>
+        </div>
+        <div class="col-6">
+          <%= f.input :next_vaccination, html5: :true, label: 'Next Vaccination' %>
+        </div>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
-  </div>
-<% end %>
+    <div class="d-grid gap-2">
+      <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
+      <%= link_to 'Go back', pets_path, class:'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

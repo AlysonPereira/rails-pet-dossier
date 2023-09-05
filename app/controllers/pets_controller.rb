@@ -1,5 +1,5 @@
 class PetsController < ApplicationController
-  before_action :set_pet, only: %i[edit update destroy]
+  before_action :set_pet, only: %i[show edit update destroy]
 
   def index
     @pets = Pet.all
@@ -18,6 +18,8 @@ class PetsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def show; end
 
   def edit; end
 

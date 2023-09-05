@@ -9,9 +9,8 @@ Rails.application.routes.draw do
     resources :products
   end
   resources :pets do
-    
-    resources :medicines, only: [:new, :create]
-    resources :vaccines, only: [:new, :create]
+    resources :medicines, only: %i[new create]
+    resources :vaccines, only: %i[new create]
   end
   get 'dossier', to: "pages#dossier"
 end
