@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :set_pet, only: %i[edit update destroy]
+
   def index
     @pets = Pet.all
   end
@@ -11,17 +13,33 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
     if @pet.save
-      redirect_to pet_path(@pet)
+      redirect_to pets_path, notice: 'Pet was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def show
-    @pet = Pet.find(params[:id])
+  def edit; end
+
+  def update
+    @pet.update(pet_params)
+    if @pet.save
+      redirect_to pets_path, notice: 'Pet was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @pet.destroy
+    redirect_to pets_path, notice: 'Pet was successfully deleted.'
   end
 
   private
+
+  def set_pet
+    @pet = Pet.find(params[:id])
+  end
 
   def pet_params
     params.require(:pet).permit(:name, :specie, :breed, :weight, :dob)
