@@ -32,7 +32,7 @@ class WishListsController < ApplicationController
     @wishlist.destroy
     redirect_to wish_lists_path
   end
-  
+
   private
 
   def set_wishlist
