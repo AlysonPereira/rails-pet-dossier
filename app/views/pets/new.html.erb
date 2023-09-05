@@ -1,34 +1,36 @@
 <div class="container">
-  <h2 class="text-center my-2">Add a Pet</h2>
-  <%= simple_form_for(@pet) do |f| %>
-    <div class="row">
+  <h2 class="text-center my-2 heading">Add a Pet</h2>
+  <%= simple_form_for(@pet, html: { class: 'form-container form' }) do |f| %>
+    <div class="row mb-3">
       <div class="col-12">
-        <%= f.input :name, placeholder: "Pet name" %>
+        <%= f.input :name, placeholder: "Pet name", input_html: { class: "form-control input" } %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <%= f.input :specie, collection: Pet::SPECIE %>
+    <div class="row mb-3">
+      <div class="col-md-4 my-2">
+        <%= f.input :specie, collection: Pet::SPECIE, input_html: { class: "form-control input" } %>
       </div>
-      <div class="col-8">
-        <%= f.input :breed, placeholder: "Breed" %>
+      <div class="col-md-8">
+        <%= f.input :breed, placeholder: "Breed", input_html: { class: "form-control input" } %>
       </div>
     </div>
-    <div class="row">
-      <div class="col-4">
-        <%= f.input :weight, placeholder: "Weight" %>
+    <div class="row mb-3">
+      <div class="col-md-4 mt-3 mt-md-0">
+        <%= f.input :weight, placeholder: "Weight", input_html: { class: "form-control input" } %>
       </div>
-      <div class="col-8">
-        <%= f.label :dob, "Date of birth (dd/mm/yyyy)", class:"mb-2" %>
+      <div class="col-md-8 mt-3 mt-md-0">
+        <%= f.label :dob, "Date of birth", class: "mb-2" %>
         <%= f.input :dob, label: false, as: :date, start_year: Date.today.year - 50,
                               end_year: Date.today.year, order: [:day, :month, :year],
-                              placeholder: "Date of birth" %>
+                              placeholder: "Date of birth", input_html: { class: "form-control input" } %>
       </div>
     </div>
     <div class="row">
-      <div class="d-grid gap-2">
-        <%= f.submit class:"btn btn-primary" %>
-        <%= link_to 'Go back', pets_path, class:'btn btn-secondary'  %>
+      <div class="col-12">
+        <div class="d-grid gap-2">
+          <%= f.submit "Submit", class: "btn login-button" %>
+          <%= link_to 'Go back', pets_path, class: 'btn btn-secondary' %>
+        </div>
       </div>
     </div>
   <% end %>
