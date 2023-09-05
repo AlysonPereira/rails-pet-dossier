@@ -1,5 +1,5 @@
 class VaccinesController < ApplicationController
-  before_action :set_dossier
+  before_action :set_pet
 
   def new
     @vaccine = Vaccine.new
@@ -12,10 +12,10 @@ class VaccinesController < ApplicationController
   private
 
   def vaccine_params
-    params.require(:vaccine).permit(:name, :vaccination_date, :next_vaccination, :dossier_id)
+    params.require(:vaccine).permit(:name, :vaccination_date, :next_vaccination, :pet_id)
   end
 
-  def set_dossier
-    @dossier = Dossier.find([:dossier_id])
+  def set_pet
+    @pet = Pet.find([:pet_id])
   end
 end
