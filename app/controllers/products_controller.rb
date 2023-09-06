@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_wishlist, only: %i[new create destroy]
+  before_action :set_wishlist, only: %i[new create]
   def new
     @product = Product.new
   end
@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-    redirect_to wish_list_path(@wishlist)
+    redirect_to wish_list_path(@product.wish_list)
   end
 
   private

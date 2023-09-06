@@ -19,7 +19,9 @@ class WishListsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @products = @wishlist.products
+  end
 
   def edit; end
 

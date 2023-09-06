@@ -1,10 +1,16 @@
-<div class="container">
-  <h1 class="text-center mt-4">Wish Lists</h1>
-  <div class="d-flex justify-content-center">
-    <%= link_to new_wish_list_path, class: 'btn btn-success mt-3 mb-3' do %>
-      <i class="fas fa-plus"></i> Wish list
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to authenticated_root_path do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+    <% end %>
+    <a class="navbar-brand"><strong>Wishlists</strong></a>
+    <%= link_to new_wish_list_path do %>
+      <i class="fas fa-plus fa-lg text-dark"></i>
     <% end %>
   </div>
+</nav>
+
+<div class="container">
   <div class="row">
     <% @wishlists.each do |wishlist| %>
       <div class="col-12 col-md-6 col-lg-4 mb-3">
