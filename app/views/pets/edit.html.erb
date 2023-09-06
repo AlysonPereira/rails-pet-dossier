@@ -20,7 +20,7 @@
         <%= f.input :specie, disabled: true %>
       </div>
       <div class="col-8">
-        <%= f.input :breed, disabled: true %>
+        <%= f.input :breed %>
       </div>
     </div>
     <div class="row">
@@ -29,7 +29,9 @@
       </div>
       <div class="col-8">
         <%= f.label :dob, "Date of birth (dd/mm/yyyy)", class:"mb-2" %>
-        <%= f.input :dob, label: false, html5:true, disabled: true %>
+         <%= f.input :dob, label: false, as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year, order: [:day, :month, :year],
+                              html5: true, placeholder: "Date of birth", input_html: { max: Date.today.to_s } %>
       </div>
     </div>
     <div class="row">
