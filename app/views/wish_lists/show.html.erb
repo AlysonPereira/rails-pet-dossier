@@ -8,7 +8,7 @@
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center">
           <h4 class="card-title mb-2"><strong><%= product.name.capitalize %></strong></h4>
-          <%= link_to wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+          <%= link_to wish_list_product_path({wish_list_id: @wishlist.id, id: product.id}), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
             <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
           <% end %>
         </div>

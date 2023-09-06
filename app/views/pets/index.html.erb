@@ -15,7 +15,11 @@
     <% @pets.each do |pet| %>
       <div class="col-3 my-2">
         <%= link_to pet_path(pet), class:"text-decoration-none", style:"color: inherit;" do %>
-          <%= image_tag 'pet-placeholder.png', class:"img-fluid border border-5" %>
+          <% if pet.image.attached? %>
+            <%= cl_image_tag pet.image.key, class:"img-pet img-fluid border border-5" %>
+          <% else %>
+            <%= image_tag 'pet-placeholder.png', class:"img-pet img-fluid border border-5" %>
+          <% end %>
         <% end %>
       </div>
       <div class="col-9 mb-2">
