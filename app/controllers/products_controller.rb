@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_wishlist, only: %i[new create]
+  before_action :set_wishlist, only: %i[new create destroy]
   def new
     @product = Product.new
   end
@@ -12,6 +12,12 @@ class ProductsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to wish_list_path(@wishlist)
   end
 
   private
