@@ -7,12 +7,14 @@
   </div>
   <div class="row">
     <% @wishlists.each do |wishlist| %>
-      <div class="col-12 mb-3">
-        <%= link_to wish_list_path(wishlist), class: 'list-group-item list-group-item-action' do %>
-          <strong>
-            <p class="mb-0"><%= wishlist.title %></p>
-          </strong>
-        <% end %>
+      <div class="col-12 col-md-6 col-lg-4 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <%= link_to wish_list_path(wishlist), class: "text-decoration-none" do %>
+              <h5 class="card-title"><%= wishlist.title %></h5>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

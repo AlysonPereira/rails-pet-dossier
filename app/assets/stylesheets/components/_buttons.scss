@@ -1,0 +1,17 @@
+.btn-back {
+  padding: 10px;
+  background-color: #F5EAEA;
+  width: 50%;
+  color: black;
+  border: none;
+  box-shadow: #F16767 0px 10px 10px -5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-back:hover {
+  background-color: #F5EAEA;
+  color: white;
+  box-shadow: #F16767 0px 10px 10px -5px;
+}
