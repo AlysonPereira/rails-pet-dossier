@@ -26,7 +26,7 @@ class PetsController < ApplicationController
   def update
     @pet.update(pet_params)
     if @pet.save
-      redirect_to pets_path, notice: 'Pet was successfully updated.'
+      redirect_to pet_path(@pet), notice: 'Pet was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
