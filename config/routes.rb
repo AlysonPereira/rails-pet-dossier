@@ -13,4 +13,5 @@ Rails.application.routes.draw do
     resources :vaccines, only: %i[new create]
   end
   get 'dossier', to: "pages#dossier"
+  get 'landingpage', to: "pages#landingpage"
 end
