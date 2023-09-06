@@ -1,5 +1,14 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to pets_path do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
+    <% end %>
+    <h2 class="text-center my-2 heading">Add a pet</h2>
+    <p></p>
+  </div>
+</nav>
+
 <div class="container">
-  <h2 class="text-center my-2 heading">Add a Pet</h2>
   <%= simple_form_for(@pet, html: { class: 'form-container form' }) do |f| %>
     <div class="row mb-3">
       <div class="col-12">
@@ -28,7 +37,6 @@
     <div class="row">
       <div class="d-grid gap-2">
         <%= f.submit class:"btn btn-primary" %>
-        <%= link_to 'Go back', pets_path, class:'btn btn-secondary' %>
       </div>
     </div>
   <% end %>
