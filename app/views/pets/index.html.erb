@@ -13,11 +13,16 @@
         <%= link_to pet_path(pet), class:"text-decoration-none", style:"color: inherit;" do %>
           <h5><strong><%= pet.name %></strong></h5>
         <% end %>
-        <p class="my-1">Breed: <strong><%= pet.breed %></strong></p>
-        <% age = ((Time.zone.now - pet.dob.to_time) / 1.year.seconds).floor %>
-        
-        <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
-        <p class="my-1">Weight: <strong><%= pet.weight %></strong> kgs</p>
+        <% unless pet.breed.blank? %>
+          <p class="my-1">Breed: <strong><%= pet.breed %></strong></p>
+        <% end %>
+        <% unless pet.dob.nil? %>
+          <% age = ((Time.zone.now - pet.dob.to_time) / 1.year.seconds).floor %>
+          <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
+        <% end %>
+        <% unless pet.weight.nil? %>
+          <p class="my-1">Weight: <strong><%= pet.weight %></strong> kgs</p>
+        <% end %>
       </div>
       <div class="col-3">
         <div class="d-flex align-items-end flex-column">
