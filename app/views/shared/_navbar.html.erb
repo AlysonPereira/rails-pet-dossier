@@ -3,35 +3,29 @@
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "logopet.png"%> <span class="logo-font">PET DOSSIER</span>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto gap-1">
+      <ul class="navbar-nav ms-auto text-center gap-2">
         <% if user_signed_in? %>
-          <li class="text-navbar nav-item active">
-            <%= link_to "Home", "/", class: "dropdown-item text-center" %>
+          <li class=" nav-item active">
+            <%= link_to "Home", "/", class: "text-center text-navbar" %>
           </li>
-          <li class="text-navbar nav-item">
-            <%= link_to "Pets", pets_path, class: "dropdown-item text-center" %>
+          <li class="nav-item">
+            <%= link_to "Pets", pets_path, class: "text-center text-navbar" %>
           </li>
-
-           <li class="text-navbar nav-item">
-            <%= link_to "Dossier", dossier_path, class: "dropdown-item text-center" %>
+          <li class=" nav-item">
+            <%= link_to "Dossier", dossier_path, class: "text-center text-navbar" %>
           </li>
-
-          <li class="text-navbar nav-item">
-
-            <%= link_to "Wishlists", wish_lists_path, class: "dropdown-item text-center" %>
+          <li class="nav-item">
+            <%= link_to "Wishlists", wish_lists_path, class: "text-center text-navbar" %>
           </li>
-          <li class="text-navbar nav-item">
-            <%= link_to "Find a Petshop", root_path, class: "dropdown-item text-center" %>
+          <li class=" nav-item">
+            <%= link_to "Find a Petshop", root_path, class: "text-center text-navbar" %>
           </li>
-
-          <li class="text-navbar nav-item">
-            <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item text-center" %>
+          <li class=" nav-item">
+            <%= link_to "Logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "text-navbar text-center mx-2" %>
           </li>
         <% else %>
           <li class="nav-item">
