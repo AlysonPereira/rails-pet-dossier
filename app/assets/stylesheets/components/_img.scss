@@ -2,3 +2,15 @@
   // height: 100px;
   object-fit: cover;
 }
+
+.carousel-img {
+  height: 600px;
+  
+}
+
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 300px;
+  }
+}
+  
