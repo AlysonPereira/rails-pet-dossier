@@ -7,6 +7,12 @@ class MedicinesController < ApplicationController
 
   def create
     @medicine = Medicine.new(medicine_params)
+    @medicine.pet = @pet
+    if @medicine.save!
+      redirect_to pet_path(@pet)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
