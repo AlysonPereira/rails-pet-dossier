@@ -1,24 +1,31 @@
-<div class="container mt-5">
-  <h1 class="text-center"><%= @wishlist.title %></h1>
-  <div class="d-flex justify-content-center mb-3">
-    <%= link_to 'Add Products', new_wish_list_product_path(@wishlist), class: 'btn btn-primary' %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to wish_lists_path do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+    <% end %>
+    <a class="navbar-brand"><strong><%= @wishlist.title %></strong></a>
+    <%= link_to wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+      <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
+    <% end %>
   </div>
-  <% @wishlist.products.each do |product|%>
+</nav>
+<div class="container mt-2">
+  <% @products.each do |product|%>
     <div class="card mb-3">
       <div class="card-body">
         <div class="d-flex justify-content-between align-items-center">
           <h4 class="card-title mb-2"><strong><%= product.name.capitalize %></strong></h4>
-          <%= link_to wish_list_product_path({wish_list_id: @wishlist.id, id: product.id}), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+          <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
             <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
           <% end %>
         </div>
         <p class="card-text"><strong>Price:</strong> $<%= product.price %></p>
-        <p class="card-text"><strong>Local:</strong> <%= product.local %></p>
+        <p class="card-text"><strong>Store:</strong> <%= product.local %></p>
       </div>
     </div>
   <% end %>
-  <div class="d-flex justify-content-center mt-3">
-    <%= link_to 'Back', wish_lists_path, class: 'btn btn-secondary me-2' %>
-    <%= link_to 'Delete', wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger me-2' %>
+  <div class="d-flex justify-content-center mb-3">
+    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn btn-primary' %>
   </div>
+
 </div>
