@@ -19,5 +19,15 @@
     font-weight: 400;
   }
 
+  @font-face{
+    font-family: "Cattino";
+    src: url("Cattino-OVEMo.otf");
+    font-weight: 700;
+  }
+
+  .pet-name{
+    font-family: "Cattino";
+  }
+  
   $headers-font: "Nunito", "Helvetica", "sans-serif";
   $body-font: "Work Sans", "Helvetica", "sans-serif";

@@ -7,6 +7,12 @@ class VaccinesController < ApplicationController
 
   def create
     @vaccine = Vaccine.new(vaccine_params)
+    @vaccine.pet = @pet
+    if @vaccine.save!
+      redirect_to pet_path(@pet)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private

@@ -20,7 +20,7 @@
         <%= f.input :dosage, label: 'Dosage' %>
       </div>
       <div class="col-6">
-        <%= f.input :unit, label: 'Unit' %>
+        <%= f.input :unit,collection: Medicine::UNIT, label: 'Unit' %>
       </div>
     </div>
     <div class="row">
@@ -33,7 +33,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <%= f.input :period, label: 'Period' %>
+        <%= f.input :period, label: 'Times/Day' %>
       </div>
     </div>
 
