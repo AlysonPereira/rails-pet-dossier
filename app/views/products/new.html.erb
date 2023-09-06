@@ -1,9 +1,23 @@
-<div class="container"><h2>Add Products</h2></div>
-
 <div class="container">
-  <%= simple_form_for [@wishlist, @product] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :price %>
-    <%= f.input :local %>
-    <%= f.submit class: 'btn btn-sm btn-success' %>
-<% end %>
+  <h2 class="text-center my-2 heading">Add Products</h2>
+  <%= simple_form_for [@wishlist, @product], html: { class: 'form-container form' } do |f| %>
+    <div class="row mb-3">
+      <div class="col-12">
+        <%= f.input :name, placeholder: "Product name", input_html: { class: "form-control input" } %>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-md-4 my-2">
+        <%= f.input :price, placeholder: "Price", input_html: { class: "form-control input" } %>
+      </div>
+      <div class="col-md-8">
+        <%= f.input :local, placeholder: "Local", input_html: { class: "form-control input" } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-grid gap-2">
+        <%= f.submit class:"login-button btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
