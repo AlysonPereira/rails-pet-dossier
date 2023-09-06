@@ -1,5 +1,14 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to pet_path(@pet) do %>
+      <i class="fa-solid fa-arrow-left-long text-dark"></i>
+    <% end %>
+    <a class="navbar-brand"><strong>Edit <%= @pet.name %></strong></a>
+
+    <p></p>
+  </div>
+</nav>
 <div class="container">
-  <h2 class="text-center my-2">Add a Pet</h2>
   <%= simple_form_for(@pet) do |f| %>
     <div class="row">
       <div class="col-12">
@@ -20,13 +29,12 @@
       </div>
       <div class="col-8">
         <%= f.label :dob, "Date of birth (dd/mm/yyyy)", class:"mb-2" %>
-        <%= f.input :dob, label: false, disabled: true %>
+        <%= f.input :dob, label: false, html5:true, disabled: true %>
       </div>
     </div>
     <div class="row">
       <div class="d-grid gap-2">
         <%= f.submit class:"btn btn-primary" %>
-        <%= link_to 'Go back', pets_path, class:'btn btn-secondary'  %>
       </div>
     </div>
   <% end %>
