@@ -7,24 +7,30 @@
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-md-4 my-2">
+      <div class="col-md-12 my-2">
         <%= f.input :specie, collection: Pet::SPECIE, input_html: { class: "form-control input" } %>
       </div>
-      <div class="col-md-8">
+
+      <div class="col-md-12">
         <%= f.input :breed, placeholder: "Breed", input_html: { class: "form-control input" } %>
       </div>
     </div>
     <div class="row mb-3">
-      <div class="col-md-4 mt-3 mt-md-0">
+      <div class="col-md-12 mt-3 mt-md-0">
         <%= f.input :weight, placeholder: "Weight", input_html: { class: "form-control input" } %>
       </div>
-      <div class="col-md-8 mt-3 mt-md-0">
+      <div class="col-md-12 mt-3 mt-md-0">
         <%= f.label :dob, "Date of birth", class: "mb-2" %>
         <%= f.input :dob, label: false, as: :date, start_year: Date.today.year - 50,
                               end_year: Date.today.year, order: [:day, :month, :year],
                               html5: true, placeholder: "Date of birth" %>
       </div>
     </div>
+     <div class="row mb-3">
+      <div class="col-md-12 mt-3 mt-md-0">
+        <%= f.input :image, as: :file, input_html: {class: "input"}, label: '📷 Upload a photo'  %>
+      </div>
+     </div>
     <div class="row">
       <div class="d-grid gap-2">
         <%= f.submit class:"btn btn-primary" %>

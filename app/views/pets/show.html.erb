@@ -24,20 +24,18 @@
 <div class="container mt-2">
   <div class="row">
     <div class="col-5">
-      <%= image_tag 'pet-placeholder.png', class:"img-fluid border border-5" %>
+         <% if @pet.image.attached? %>
+            <%= cl_image_tag @pet.image.key, class:"img-pet img-fluid border border-5" %>
+          <% else %>
+            <%= image_tag 'pet-placeholder.png', class:"img-pet img-fluid border border-5" %>
+          <% end %>
     </div>
     <div class="col-7">
       <p class="my-2">Species: <strong><%= @pet.specie %></strong></p>
-      <% unless @pet.breed.blank? %>
-        <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
-      <% end %>
-      <% unless @pet.weight.nil? %>
-        <p class="my-2">Weight: <strong><%= @pet.weight %></strong> kgs</p>
-      <% end %>
-      <% unless @pet.dob.nil? %>
-        <% age = ((Time.zone.now - @pet.dob.to_time) / 1.year.seconds).floor %>
-        <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
-      <% end %>
+      <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
+      <p class="my-2">Weight: <strong><%= @pet.weight %></strong> kgs</p>
+      <% age = ((Time.zone.now - @pet.dob.to_time) / 1.year.seconds).floor %>
+      <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
       <p class="my-2">Next Vaccine:</p>
       <p class="my-2">Next Medicine:</p>
     </div>
