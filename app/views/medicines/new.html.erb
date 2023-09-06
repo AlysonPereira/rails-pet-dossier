@@ -1,8 +1,18 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to pet_path(@pet) do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+    <% end %>
+    <a class="navbar-brand">Add Medicine for <strong><%= @pet.name %></strong></a>
+
+    <p></p>
+  </div>
+</nav>
+
 <div class="container">
   <%= simple_form_for [@pet, @medicine] do |f| %>
     <div class="row mt-2">
       <div class="col-12">
-        <h2 class="text-center">Add Medicine</h2>
         <%= f.input :name, label: 'Medicine Name' %>
       </div>
     </div>
@@ -29,8 +39,7 @@
     </div>
 
     <div class="d-grid gap-2">
-      <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
-      <%= link_to 'Go back', pets_path, class:'btn btn-secondary' %>
+      <%= f.button :submit, 'Add', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

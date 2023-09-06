@@ -1,40 +1,42 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <p></p>
+
+    <a class="navbar-brand"><strong>My Pets</strong></a>
+
+    <%= link_to new_pet_path do %>
+      <i class="fa-solid fa-plus fa-lg text-dark"></i>
+    <% end %>
+  </div>
+</nav>
+
 <div class="container mt-2">
   <div class="row">
-    <div class="col-12">
-    <h1 class="text-center">My Pets</h1>
-    </div>
     <% @pets.each do |pet| %>
-      <div class="col-3 mb-2">
+      <div class="col-3 my-2">
         <%= link_to pet_path(pet), class:"text-decoration-none", style:"color: inherit;" do %>
-          <%= image_tag 'pet-placeholder.png', class:"img-fluid border border-5" %>
+          <% if pet.image.attached? %>
+            <%= cl_image_tag pet.image.key, class:"img-pet img-fluid border border-5" %>
+          <% else %>
+            <%= image_tag 'pet-placeholder.png', class:"img-pet img-fluid border border-5" %>
+          <% end %>
         <% end %>
       </div>
-      <div class="col-6">
+      <div class="col-9 mb-2">
         <%= link_to pet_path(pet), class:"text-decoration-none", style:"color: inherit;" do %>
-          <h5><strong><%= pet.name %></strong></h5>
+          <h5 class='my-1'><strong><%= pet.name %></strong></h5>
         <% end %>
-        <p class="my-1">Breed: <strong><%= pet.breed %></strong></p>
-        <% age = ((Time.zone.now - pet.dob.to_time) / 1.year.seconds).floor %>
-        
-        <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
-        <p class="my-1">Weight: <strong><%= pet.weight %></strong> kgs</p>
-      </div>
-      <div class="col-3">
-        <div class="d-flex align-items-end flex-column">
-          <div class="p-2">
-            <%= link_to edit_pet_path(pet) do %>
-              <i class="fa-solid fa-pen-to-square fa-lg"></i>
-            <% end %>
-          </div>
-          <div class="p-2">
-            <%= link_to pet_path(pet), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-              <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
-            <% end %>
-          </div>
-        </div>
+        <% unless pet.breed.blank? %>
+          <p class="my-1">Breed: <strong><%= pet.breed %></strong></p>
+        <% end %>
+        <% unless pet.dob.nil? %>
+          <% age = ((Time.zone.now - pet.dob.to_time) / 1.year.seconds).floor %>
+          <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
+        <% end %>
+        <% unless pet.weight.nil? %>
+          <p class="my-1">Weight: <strong><%= pet.weight %></strong> kgs</p>
+        <% end %>
       </div>
     <% end %>
   </div>
-
-  <%= link_to 'Add a pet', new_pet_path, class:'btn btn-sm btn-primary' %>
 </div>
