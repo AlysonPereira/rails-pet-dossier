@@ -51,6 +51,10 @@
 <div class="container mt-2">
   <div class="row">
     <h5 class="mx-2"><strong>Medicines</strong></h5>
+      <% @medicines.each do |medicine| %>
+        <p class="my-2"><strong>Name: </strong><%= medicine.name %></p>
+        <p class="my-2"><strong>Time/Day</strong>Every <%= 24 / medicine.period%> hours</p>
+      <% end %>
   </div>
 </div>
 
