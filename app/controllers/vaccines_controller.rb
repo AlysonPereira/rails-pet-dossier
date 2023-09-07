@@ -18,7 +18,7 @@ class VaccinesController < ApplicationController
   private
 
   def vaccine_params
-    params.require(:vaccine).permit(:name, :vaccination_date, :next_vaccination)
+    params.require(:vaccine).permit(:name, :vaccination_date, :revaccination_period)
   end
 
   def set_pet

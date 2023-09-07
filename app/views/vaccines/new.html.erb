@@ -4,7 +4,7 @@
       <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
     <% end %>
     <a class="navbar-brand">Add Vaccine for <strong><%= @pet.name %></strong></a>
-    
+
     <p></p>
   </div>
 </nav>
@@ -20,7 +20,7 @@
           <%= f.input :vaccination_date, html5: :true, label: 'Vaccination Date' %>
         </div>
         <div class="col-6">
-          <%= f.input :next_vaccination, html5: :true, label: 'Next Vaccination' %>
+          <%= f.input :revaccination_period, collection: Vaccine::PERIOD, label: 'Revaccination Period' %>
         </div>
       </div>
     </div>

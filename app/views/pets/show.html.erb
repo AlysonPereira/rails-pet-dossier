@@ -61,9 +61,10 @@
 <div class="container mt-2">
   <div class="row">
     <h5 class="mx-2"><strong>Vaccines</strong></h5>
-       <% @vaccines.each do |vaccine| %>
+      <% @vaccines.each do |vaccine| %>
         <p class="my-2"><strong>Name: </strong><%= vaccine.name %></p>
-        <p class="my-2"><strong>Next Vaccine: </strong><%= vaccine.next_vaccination%></p>
+        <p class="my-2"><strong>Next Vaccine: </strong><%= vaccine.revaccination_period%></p>
+        <p class="my-2"><strong>Date Next Vaccine: </strong><%= (vaccine.next_vaccination)%></p>
       <% end %>
   </div>
 </div>
