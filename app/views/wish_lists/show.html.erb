@@ -1,14 +1,14 @@
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
+  <div class="container-fluid justify-content-between">
     <%= link_to wish_lists_path do %>
-      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
     <% end %>
+    <h2 class="text-center my-2 heading"><%= @wishlist.title.capitalize %></h2>
+    <p></p>
   </div>
 </nav>
+
 <div class="container mt-2">
-  <div class="d-flex">
-    <h3> <strong><%= @wishlist.title.capitalize %><span class="text-color">.</span></strong></h3>
-  </div>
   <div>
     <div class="card-wishlist">
       <div class="me-3"><i class="fa-solid fa-sack-dollar"></i></div>
