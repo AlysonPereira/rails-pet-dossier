@@ -1,0 +1,3 @@
+class FactsController < ApplicationController
+
+end
