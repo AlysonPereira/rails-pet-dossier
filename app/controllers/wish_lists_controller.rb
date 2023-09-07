@@ -21,6 +21,7 @@ class WishListsController < ApplicationController
 
   def show
     @products = @wishlist.products
+    @total = @products.sum(:price)
   end
 
   def edit; end

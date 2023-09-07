@@ -1,31 +1,44 @@
 <nav class="navbar navbar-inverse">
-  <div class="container-fluid justify-content-between">
+  <div class="container-fluid">
     <%= link_to wish_lists_path do %>
       <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
-    <% end %>
-    <a class="navbar-brand"><strong><%= @wishlist.title %></strong></a>
-    <%= link_to wish_list_path(@wishlist), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-      <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
     <% end %>
   </div>
 </nav>
 <div class="container mt-2">
-  <% @products.each do |product|%>
-    <div class="card mb-3">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center">
-          <h4 class="card-title mb-2"><strong><%= product.name.capitalize %></strong></h4>
-          <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
-            <i class="fa-solid fa-trash-can fa-lg" style="color: #c30404;"></i>
-          <% end %>
-        </div>
-        <p class="card-text"><strong>Price:</strong> $<%= product.price %></p>
-        <p class="card-text"><strong>Store:</strong> <%= product.local %></p>
+  <div class="d-flex">
+    <h3> <strong><%= @wishlist.title.capitalize %><span class="text-color">.</span></strong></h3>
+  </div>
+  <div>
+    <div class="card-wishlist">
+      <div class="me-3"><i class="fa-solid fa-sack-dollar"></i></div>
+      <div>
+        Total: $<%= @total %>
       </div>
     </div>
-  <% end %>
-  <div class="d-flex justify-content-center mb-3">
-    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn btn-primary' %>
   </div>
+  <div class="mt-5">
+    <% @products.each do |product|%>
 
+        <div class="card-body my-3 card-product-wishlist">
+          <div class="text-icone-trash">
+            <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %>
+              <i class="fa-solid fa-trash-can fa-lg w-100 text-end"></i>
+            <% end %>
+          </div>
+          <div class="d-flex justify-content-between align-items-center py-1 px-1">
+            <i class="fa-solid fa-bone"></i>
+            <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
+            <div>
+              <h4 class="card-text m-0"><strong> $<%= product.price %></strong></h4>
+              <p class="card-text m-0 text-center"><%= product.local %></p>
+            </div>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+  <div class="d-flex justify-content-center mb-3">
+    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product' %>
+  </div>
 </div>
