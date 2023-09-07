@@ -1,19 +1,21 @@
 <div class="container">
-  <h1 class="text-center">Guardando momentos especiais na vida do seu melhor amigo</h1>
-  
-    
-      <div class="cards mt-5">
-      <div class="card-category img-card1">
-        <%= link_to "Wishlists", wish_lists_path, class:"link-text text-decoration-none text-white" %>
-      </div>
+  Random Fact
+  <h2 class="text-center">
+    "<%= @facts.sample.content %>"
+  </h2>
 
-      <div class="card-category img-card2">
-       <%= link_to "Dossier", dossier_path, class:"link-text text-decoration-none text-white" %> 
-      </div>
 
-      <div class="card-category img-card3" >
-        <%= link_to "Pets", pets_path, class:"link-text text-decoration-none text-white" %>
-      </div>
+  <div class="cards mt-5">
+    <div class="card-category img-card1">
+      <%= link_to "Wishlists", wish_lists_path, class:"link-text text-decoration-none text-white" %>
+    </div>
+
+    <div class="card-category img-card2">
+    <%= link_to "Dossier", dossier_path, class:"link-text text-decoration-none text-white" %>
+    </div>
+
+    <div class="card-category img-card3">
+      <%= link_to "Pets", pets_path, class:"link-text text-decoration-none text-white" %>
     </div>
   </div>
 </div>
