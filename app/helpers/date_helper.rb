@@ -2,7 +2,7 @@ module DateHelper
   def string_to_date(vaccination_day,string)
     case string
     when 'in 1 week'
-      vaccination_day.next_week
+      vaccination_day + 7
     when 'in 15 days'
       vaccination_day + 15
     when 'in 1 month'
