@@ -8,4 +8,8 @@ class PagesController < ApplicationController
     @vaccines = Vaccine.all
     @medicines = Medicine.all
   end
+
+  def landingpage
+    @facts = Fact.all
+  end
 end
