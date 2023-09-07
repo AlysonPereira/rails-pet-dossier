@@ -1,13 +1,13 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid justify-content-between">
     <%= link_to pets_path do %>
-      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
     <% end %>
-    <a class="navbar-brand pet-name"><strong><%= @pet.name.capitalize %></strong></a>
+    <h2 class="pet-name heading"><%= @pet.name.capitalize %></h2>
 
     <li class="nav-item dropdown">
       <button class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa-solid fa-gear fa-lg"></i>
+        <i class="fa-solid fa-gear heading"></i>
       </button>
       <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <%= link_to edit_pet_path(@pet), class:"dropdown-item" do %>
@@ -31,7 +31,7 @@
       <% end %>
     </div>
     <div class="col-7">
-      <p class="my-2">Species: <strong><%= @pet.specie %></strong></p>
+      <p class="my-2">Species: <%= @pet.specie %></strong></p>
       <% unless @pet.breed.blank? %>
         <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
       <% end %>
@@ -71,9 +71,9 @@
       <% end %>
   </div>
 </div>
-<div class="row mx-2">
+<div class="row">
   <div class="d-grid gap-2">
-    <%= link_to 'Add a medicine', new_pet_medicine_path(@pet), class: 'btn btn-primary' %>
-    <%= link_to 'Add a vaccine', new_pet_vaccine_path(@pet), class: 'btn btn-primary' %>
+    <%= link_to 'Add a medicine', new_pet_medicine_path(@pet), class: 'btn-product my-1' %>
+    <%= link_to 'Add a vaccine', new_pet_vaccine_path(@pet), class: 'btn-product my-1' %>
   </div>
 </div>

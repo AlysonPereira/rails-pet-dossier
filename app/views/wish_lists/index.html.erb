@@ -1,11 +1,11 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid justify-content-between">
     <%= link_to authenticated_root_path do %>
-      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
     <% end %>
-    <a class="navbar-brand"><strong>Wishlists</strong></a>
+    <h2 class="heading">Wishlists</h2>
     <%= link_to new_wish_list_path do %>
-      <i class="fas fa-plus fa-lg text-dark"></i>
+      <i class="fas fa-plus fa-lg heading"></i>
     <% end %>
   </div>
 </nav>

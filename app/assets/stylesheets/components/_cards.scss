@@ -26,6 +26,23 @@
   cursor: pointer;
 }
 
+.img-card1{
+  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.00)), asset-url("petred3.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.img-card2{
+  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.00)), asset-url("petyellow2.png");
+  background-size: cover;
+  background-position: center;
+}
+.img-card3{
+  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.00)), asset-url("petpurple5.png");
+  background-size: cover;
+  background-position: center;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
@@ -33,6 +50,9 @@
   }
   .card-category {
     height: 150px;
+  }
+  .img-card1{
+    background-position: inherit;
   }
 }
 
@@ -43,6 +63,9 @@
   }
   .card-category {
     height: 150px;
+  }
+  .img-card1{
+    background-position-y: inherit;
   }
 
 }
@@ -77,20 +100,6 @@
   }
 }
 
-
-.img-card1{
-  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)), asset-url("petpurple1.png");
-  background-size: cover;
-}
-
-.img-card2{
-  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)), asset-url("petyellow2.png");
-  background-size: cover;
-}
-.img-card3{
-  background: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)), asset-url("petred3.png");
-  background-size: cover;
-}
 
 .card-wishlist{
     height: 150px;

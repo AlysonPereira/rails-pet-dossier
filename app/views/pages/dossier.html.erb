@@ -1,6 +1,14 @@
-<div class="container">
-  <h1>Pets Dossier</h1>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to authenticated_root_path do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
+    <% end %>
+    <h2 class="heading">Dossier</h2>
+    <p></p>
+  </div>
+</nav>
 
+<div class="container">
   <h3>Vaccines:</h3>
   <ul>
     <% @vaccines.each do |vaccine| %>

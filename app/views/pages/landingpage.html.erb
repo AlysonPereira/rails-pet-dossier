@@ -1,4 +1,4 @@
-<div class="card mt-2">
+<div class="mt-2">
   <div class="card-body card-random mx-2">
     <blockquote class="blockquote mb-0">
       <p><%= @facts.sample.content %></p>
@@ -7,18 +7,24 @@
   </div>
 </div>
 <div class="container">
-  <div class="cards mt-5">
-    <div class="card-category img-card1">
-      <%= link_to "Wishlists", wish_lists_path, class:"link-text text-decoration-none text-white" %>
-    </div>
+  <div class="cards mt-3">
+    <%= link_to dossier_path, class:"link-text text-decoration-none text-white" do %>
+      <div class="card-category img-card2">
+        <p class="link-text text-decoration-none text-white">Dossier</p>
+      </div>
+    <% end %>
 
-    <div class="card-category img-card2">
-      <%= link_to "Dossier", dossier_path, class:"link-text text-decoration-none text-white" %>
-    </div>
+    <%= link_to pets_path, class:"link-text text-decoration-none text-white" do %>
+      <div class="card-category img-card3">
+        <p class="link-text text-decoration-none text-white">Pets</p>
+      </div>
+    <% end %>
 
-    <div class="card-category img-card3">
-      <%= link_to "Pets", pets_path, class:"link-text text-decoration-none text-white" %>
-    </div>
+    <%= link_to wish_lists_path, class:"link-text text-decoration-none text-white" do %>
+      <div class="card-category img-card1">
+        <p class="link-text text-decoration-none text-white">Wishlists</p>
+      </div>
+    <% end %>
   </div>
 </div>
 <div class="img-bot img-cat">
