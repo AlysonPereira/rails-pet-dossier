@@ -1,9 +1,11 @@
-<div class="container">
-  Random Fact
-  <h2 class="text-center">
-    "<%= @facts.sample.content %>"
-  </h2>
-
+<div class="card mt-2">
+  <div class="card-body card-random mx-2">
+    <blockquote class="blockquote mb-0">
+      <p><%= @facts.sample.content %></p>
+      <footer class="blockquote-footer text-white-50">Random Fact</cite></footer>
+    </blockquote>
+  </div>
+</div>
 
   <div class="cards mt-5">
     <div class="card-category img-card1">
