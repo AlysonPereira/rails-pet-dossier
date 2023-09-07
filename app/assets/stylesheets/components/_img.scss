@@ -14,3 +14,13 @@
   }
 }
   
+.img-bot {
+  margin-inline: auto;
+  width: 400px;
+}
+
+@media (max-width: 400px) {
+  .img-bot {
+    width: 200px;
+  }
+}
