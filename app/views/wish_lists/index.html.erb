@@ -13,11 +13,14 @@
 <div class="container">
   <div class="row">
     <% @wishlists.each do |wishlist| %>
-      <div class="col-12 col-md-6 col-lg-4 mb-3">
-        <div class="card">
-          <div class="card-body">
+      <div class="col-12 col-md-6 col-lg-4 mb-3 mx-2">
+        <div class="card-body my-3 card-product-wishlist p-2">
+          <div class="d-flex justify-content-between align-items-center mx-2">
             <%= link_to wish_list_path(wishlist), class: "text-decoration-none" do %>
-              <h5 class="card-title"><%= wishlist.title %></h5>
+             <strong> <h5 class="card-title text-white mt-1"><%= wishlist.title.capitalize %></h5></strong>
+            <% end %>
+            <%= link_to wish_list_path(wishlist), class: "text-decoration-none" do %>
+              <span><i class="fa-solid fa-cart-shopping"></i></span>
             <% end %>
           </div>
         </div>
