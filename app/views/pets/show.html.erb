@@ -27,7 +27,7 @@
       <% if @pet.image.attached? %>
         <%= cl_image_tag @pet.image.key, class:"img-pet img-fluid border border-5" %>
       <% else %>
-        <%= image_tag 'pet-placeholder.png', class:"img-pet img-fluid border border-5" %>
+        <%= image_tag 'paw-default.png', class:"img-pet img-fluid border border-5" %>
       <% end %>
     </div>
     <div class="col-7">
