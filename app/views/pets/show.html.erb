@@ -42,8 +42,6 @@
       <% unless @pet.weight.nil? %>
         <p class="my-2">Weight: <strong><%= @pet.weight %></strong> kgs</p>
       <% end %>
-      <p class="my-2">Next Vaccine:</p>
-      <p class="my-2">Next Medicine:</p>
     </div>
   </div>
 </div>
@@ -64,7 +62,7 @@
       <% @vaccines.each do |vaccine| %>
         <p class="my-2"><strong>Name: </strong><%= vaccine.name %></p>
         <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
-          <p class="my-2"><strong>Days:</strong>In <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> Days</p>
+          <p class="my-2"><strong>Days: </strong>In <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> Days</p>
         <% else %>
           <p class="my-2"><strong>Days: </strong><span class=" text-danger"><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> days late</span></p>
         <% end %>
