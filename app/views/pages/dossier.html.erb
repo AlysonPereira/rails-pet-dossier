@@ -10,28 +10,52 @@
 
 <div class="container">
   <h3>Vaccines:</h3>
-  <ul>
-    <% @vaccines.each do |vaccine| %>
-    <% pet = Pet.find(vaccine.pet_id) %>
-      <li><%= pet.name %></li>
-      <li><%= vaccine.name %></li>
-      <li><%= vaccine.vaccination_date %></li>
-      <li><%= vaccine.next_vaccination %></li>
-    <% end %>
-  </ul>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Pet Name</th>
+        <th>Vaccine Name</th>
+        <th>Vaccination Date</th>
+        <th>Next Vaccination</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @vaccines.each do |vaccine| %>
+      <% pet = Pet.find(vaccine.pet_id) %>
+        <tr>
+          <td><%= pet.name %></td>
+          <td><%= vaccine.name %></td>
+          <td><%= vaccine.vaccination_date %></td>
+          <td><%= vaccine.next_vaccination %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
   <h3>Medicines:</h3>
-  <ul>
-    <% @medicines.each do |medicine| %>
-    <% pet = Pet.find(medicine.pet_id) %>
-      <li><%= pet.name %></li>
-      <li><%= medicine.name %></li>
-      <li><%= medicine.dosage %></li>
-      <li><%= medicine.period %></li>
-      <li><%= medicine.unit %></li>
-      <li><%= medicine.start_date %></li>
-      <li><%= medicine.end_date %></li>
-    <% end %>
-  </ul>
-
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Pet Name</th>
+        <th>Medicine Name</th>
+        <th>Dosage</th>
+        <th>Period</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @medicines.each do |medicine| %>
+      <% pet = Pet.find(medicine.pet_id) %>
+        <tr>
+          <td><%= pet.name %></td>
+          <td><%= medicine.name %></td>
+          <td><%= medicine.dosage %> <%= medicine.unit %></td>
+          <td><%= medicine.period %></td>
+          <td><%= medicine.start_date %></td>
+          <td><%= medicine.end_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
