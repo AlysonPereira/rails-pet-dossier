@@ -7,6 +7,13 @@
   height: 600px;
 
 }
+.img-pet-radius{
+  border-radius: 50%;
+  height: 70px !important;
+  width: 70px !important;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
 @media (max-width: 768px) {
   .carousel-img {
@@ -25,7 +32,7 @@
     bottom: 0;
     left: 0;
     z-index: 1030;}
-    
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .img-bot {
