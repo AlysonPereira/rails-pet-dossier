@@ -1,9 +1,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid justify-content-between">
-    <%= link_to pet_path(@pet) do %>
-      <i class="fa-solid fa-arrow-left-long fa-lg text-dark"></i>
+    <%= link_to pet_vaccines_path(@pet) do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
     <% end %>
-    <a class="navbar-brand">Add Vaccine for <strong><%= @pet.name %></strong></a>
+    <h2 class="heading">Add a new vaccine</h2>
 
     <p></p>
   </div>
@@ -13,19 +13,19 @@
   <%= simple_form_for [@pet, @vaccine] do |f| %>
     <div class="row mt-2">
       <div class="col-12">
-        <%= f.input :name, label: 'Name' %>
+        <%= f.input :name, label: 'Vaccine name' %>
       </div>
       <div class="row">
         <div class="col-6">
-          <%= f.input :vaccination_date, html5: :true, label: 'Vaccination Date' %>
+          <%= f.input :vaccination_date, html5: :true, label: 'Vaccination date' %>
         </div>
         <div class="col-6">
-          <%= f.input :revaccination_period, collection: Vaccine::PERIOD, label: 'Revaccination Period' %>
+          <%= f.input :revaccination_period, collection: Vaccine::PERIOD, label: 'Revaccination' %>
         </div>
       </div>
     </div>
     <div class="d-grid gap-2">
-      <%= f.button :submit, 'Create', class: 'btn btn-primary' %>
+      <%= f.button :submit, 'Save', class: 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

@@ -1,5 +1,9 @@
 class MedicinesController < ApplicationController
-  before_action :set_pet, only: %i[new create destroy]
+  before_action :set_pet, only: %i[index new create destroy]
+
+  def index
+    @medicines = Medicine.where(pet_id: @pet.id).order('start_date DESC')
+  end
 
   def new
     @medicine = Medicine.new
@@ -9,7 +13,7 @@ class MedicinesController < ApplicationController
     @medicine = Medicine.new(medicine_params)
     @medicine.pet = @pet
     if @medicine.save!
-      redirect_to pet_path(@pet)
+      redirect_to pet_medicines_path(@pet)
     else
       render :new, status: :unprocessable_entity
     end
