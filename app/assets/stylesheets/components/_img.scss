@@ -8,6 +8,13 @@
 .carousel-img {
   height: 600px;
 }
+.img-pet-radius{
+  border-radius: 50%;
+  height: 70px !important;
+  width: 70px !important;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
 @media (max-width: 768px) {
   .carousel-img {
@@ -59,6 +66,54 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .img-bot {
+    width: 300px;
+  }
+}
+
+.img-home {
+  margin-inline: auto;
+  width: 400px;
+}
+
+.img-dog{
+  position: fixed;
+    right: auto;
+    bottom: 0;
+    left: 0;
+    z-index: 1030;}
+    
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .img-home {
+    width: 150px;
+  }
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .img-home {
+    width: 200px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .img-home {
+    width: 300px;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .img-home {
+    width: 300px;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .img-home {
     width: 300px;
   }
 }

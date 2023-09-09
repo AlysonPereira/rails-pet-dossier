@@ -28,7 +28,7 @@
         <% if @pet.image.attached? %>
           <%= cl_image_tag @pet.image.key, class:"img-pet" %>
         <% else %>
-          <%= image_tag 'pet-placeholder.png', class:"img-pet" %>
+          <%= image_tag 'paw-default.png', class:"img-pet" %>
         <% end %>
       </div>
     </div>
@@ -55,12 +55,32 @@
         <i class="fa-solid fa-prescription-bottle fa-lg"></i>
         Medicines
       <% end %>
+
     </div>
     <div class="col-6 d-grid text-center">
       <%= link_to pet_vaccines_path(@pet), class:"btn btn-primary text-decoration-none" do %>
         <i class="fa-solid fa-syringe fa-lg"></i>
         Vaccines
       <% end %>
-    </div>
+     </div>
+  </div>
+</div>
+
+<div class="container mt-2">
+  <div class="row">
+    <h5 class="mx-2"><strong>Vaccines</strong></h5>
+      <% @vaccines.each do |vaccine| %>
+        <p class="my-2"><strong>Name: </strong><%= vaccine.name %></p>
+        <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
+          <p class="my-2"><strong>Days: </strong>In <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> Days</p>
+        <% else %>
+          <p class="my-2"><strong>Days: </strong><span class=" text-danger"><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> days late</span></p>
+        <% end %>
+        <p class="my-2"><strong>Vaccination Date: </strong><%= vaccine.vaccination_date %></p>
+        <p class="my-2"><strong>Revaccination Date: </strong><%= string_to_date(vaccine.vaccination_date, vaccine.revaccination_period) %></p>
+        <%= link_to "Mark as done", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id)%>
+        <hr>
+      <% end %>
+    </div> 
   </div>
 </div>
