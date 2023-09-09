@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to pet_path(@pet) do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
+    <% end %>
+    <h2 class="pet-name heading"><%= @pet.name.capitalize %>'s Vaccines</h2>
+    <%= link_to new_pet_vaccine_path(@pet) do %>
+      <i class="fa-solid fa-plus fa-lg heading"></i>
+    <% end %>
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <div class="row">
+      <% @vaccines.each do |vaccine| %>
+        <p class="my-2"><strong>Name: </strong><%= vaccine.name %></p>
+        <p class="my-2"><strong>Days:</strong>In <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> Days</p>
+        <p class="my-2"><strong>Vaccination Date: </strong><%= vaccine.vaccination_date %></p>
+        <p class="my-2"><strong>Revaccination Date: </strong><%= vaccine.next_vaccination %></p>
+        <%= link_to "Mark as done", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id)%>
+        <hr>
+      <% end %>
+  </div>
+</div>

@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :pets do
-    resources :medicines, only: %i[new create]
-    resources :vaccines, only: %i[new create edit]
+    resources :medicines, only: %i[index new create]
+    resources :vaccines, only: %i[index new create edit]
     post "/revaccine", to: "vaccines#revaccine", as: :revaccine
   end
 

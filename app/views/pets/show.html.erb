@@ -23,36 +23,46 @@
 
 <div class="container mt-2">
   <div class="row">
-    <div class="col-5">
-      <% if @pet.image.attached? %>
-        <%= cl_image_tag @pet.image.key, class:"img-pet img-fluid border border-5" %>
-      <% else %>
-        <%= image_tag 'paw-default.png', class:"img-pet img-fluid border border-5" %>
-      <% end %>
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <% if @pet.image.attached? %>
+          <%= cl_image_tag @pet.image.key, class:"img-pet" %>
+        <% else %>
+          <%= image_tag 'paw-default.png', class:"img-pet" %>
+        <% end %>
+      </div>
     </div>
-    <div class="col-7">
-      <p class="my-2">Species: <%= @pet.specie %></strong></p>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12">
+      <p class="mb-2">Species: <%= @pet.specie %></strong></p>
       <% unless @pet.breed.blank? %>
         <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
       <% end %>
       <% unless @pet.dob.nil? %>
-        <% age = ((Time.zone.now - @pet.dob.to_time) / 1.year.seconds).floor %>
-        <p class="my-1">Age: <strong><%= age  %></strong> years old</p>
+        <p class="my-1">Age: <strong><%= calculate_age(@pet.dob.to_time) %></strong> years old</p>
       <% end %>
       <% unless @pet.weight.nil? %>
         <p class="my-2">Weight: <strong><%= @pet.weight %></strong> kgs</p>
       <% end %>
     </div>
   </div>
-</div>
 
-<div class="container mt-2">
-  <div class="row">
-    <h5 class="mx-2"><strong>Medicines</strong></h5>
-      <% @medicines.each do |medicine| %>
-        <p class="my-2"><strong>Name: </strong><%= medicine.name %></p>
-        <p class="my-2"><strong>Time/Day: </strong>Every <%= 24 / medicine.period%> hours</p>
+  <div class="row m-2 fixed-bottom">
+    <div class="col-6 d-grid text-center">
+      <%= link_to pet_medicines_path(@pet), class:"btn btn-primary text-decoration-none" do %>
+        <i class="fa-solid fa-prescription-bottle fa-lg"></i>
+        Medicines
       <% end %>
+
+    </div>
+    <div class="col-6 d-grid text-center">
+      <%= link_to pet_vaccines_path(@pet), class:"btn btn-primary text-decoration-none" do %>
+        <i class="fa-solid fa-syringe fa-lg"></i>
+        Vaccines
+      <% end %>
+     </div>
   </div>
 </div>
 
@@ -71,11 +81,6 @@
         <%= link_to "Mark as done", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id)%>
         <hr>
       <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="d-grid gap-2">
-    <%= link_to 'Add a medicine', new_pet_medicine_path(@pet), class: 'btn-product my-1' %>
-    <%= link_to 'Add a vaccine', new_pet_vaccine_path(@pet), class: 'btn-product my-1' %>
+    </div> 
   </div>
 </div>

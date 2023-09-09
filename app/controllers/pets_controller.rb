@@ -19,10 +19,7 @@ class PetsController < ApplicationController
     end
   end
 
-  def show
-    @medicines = Medicine.where(pet_id: @pet.id)
-    @vaccines = Vaccine.where(pet_id: @pet.id)
-  end
+  def show; end
 
   def edit; end
 
