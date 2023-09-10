@@ -13,15 +13,26 @@
 <div class="container mt-2">
   <div class="row">
       <% @vaccines.each do |vaccine| %>
-        <p class="my-2"><strong>Name: </strong><%= vaccine.name %></p>
-        <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
-          <p class="my-2"><strong>Days: </strong>In <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> Day(s)</p>
-        <% else %>
-          <p class="my-2"><strong>Days: </strong><span class=" text-danger"><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> day(s) late</span></p>
-        <% end %>
-        <p class="my-2"><strong>Vaccination Date: </strong><%= vaccine.vaccination_date %></p>
-        <p class="my-2"><strong>Revaccination Date: </strong><%= vaccine.next_vaccination %></p>
-        <%= link_to "Mark as done", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id)%>
+        <div class="card">
+          <div class="d-flex">
+            <div class="p-2 flex-grow-1"><strong><%= vaccine.name %></strong></div>
+            <div class="p-2">Date: <strong><%= vaccine.vaccination_date %></strong></div>
+          </div>
+
+          <% unless vaccine.next_vaccination.nil? %>
+            <div class="d-flex">
+              <div class="p-2 flex-grow-1">Next Dose: <%= vaccine.next_vaccination %></div>
+              <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
+                <div class="p-2">in <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> day(s)</div>
+              <% else %>
+                <div class="p-2"><span class=" text-danger"><strong><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> day(s) late</strong></span></div>
+              <% end %>
+            </div>
+
+            <%= link_to "Revaccinated", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id), class:"p-2 text-end"%>
+
+          <% end %>
+        </div>
         <hr>
       <% end %>
   </div>

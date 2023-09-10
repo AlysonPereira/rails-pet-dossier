@@ -12,8 +12,10 @@ class VaccinesController < ApplicationController
   def create
     @vaccine = Vaccine.new(vaccine_params)
     date_string = helpers.string_to_date(@vaccine.vaccination_date, @vaccine.revaccination_period)
-    date_string.strftime("%Y-%m-%d")
-    @vaccine.next_vaccination = date_string
+    unless date_string.nil?
+      date_string.strftime("%Y-%m-%d")
+      @vaccine.next_vaccination = date_string
+    end
     @vaccine.pet = @pet
     if @vaccine.save!
       redirect_to pet_vaccines_path(@pet)
@@ -31,8 +33,10 @@ class VaccinesController < ApplicationController
   def revaccine
     @revaccine = Vaccine.new(vaccine_params)
     date_string = helpers.string_to_date(@revaccine.vaccination_date, @revaccine.revaccination_period)
-    date_string.strftime("%Y-%m-%d")
-    @revaccine.next_vaccination = date_string
+    unless date_string.nil?
+      date_string.strftime("%Y-%m-%d")
+      @revaccine.next_vaccination = date_string
+    end
     @revaccine.pet = @pet
     if @revaccine.save!
       redirect_to pet_vaccines_path(@pet)
@@ -42,7 +46,6 @@ class VaccinesController < ApplicationController
   end
 
   private
-
   def vaccine_params
     params.require(:vaccine).permit(:name, :vaccination_date, :revaccination_period)
   end
