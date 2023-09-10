@@ -10,9 +10,10 @@
 
 <div class="container">
   <h3>Vaccines:</h3>
+  <div class="table-responsive">
   <table class="table table-striped">
     <thead>
-      <tr>
+      <tr class="table-title">
         <th>Pet Name</th>
         <th>Vaccine Name</th>
         <th>Vaccination Date</th>
@@ -25,17 +26,19 @@
         <tr>
           <td><%= pet.name %></td>
           <td><%= vaccine.name %></td>
-          <td><%= vaccine.vaccination_date %></td>
-          <td><%= vaccine.next_vaccination %></td>
+          <td class="text-table"><%= vaccine.vaccination_date.strftime("%d/%m/%Y") %></td>
+          <td class="text-table"><%= vaccine.next_vaccination %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
 
+  <div class="table-responsive">
   <h3>Medicines:</h3>
   <table class="table table-striped">
     <thead>
-      <tr>
+      <tr class="table-title">
         <th>Pet Name</th>
         <th>Medicine Name</th>
         <th>Dosage</th>
@@ -52,10 +55,11 @@
           <td><%= medicine.name %></td>
           <td><%= medicine.dosage %> <%= medicine.unit %></td>
           <td><%= medicine.period %></td>
-          <td><%= medicine.start_date %></td>
-          <td><%= medicine.end_date %></td>
+          <td class="text-table"><%= medicine.start_date.strftime("%d/%m/%Y") %></td>
+          <td class="text-table"><%= medicine.end_date.strftime("%d/%m/%Y") %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+</div>
 </div>
