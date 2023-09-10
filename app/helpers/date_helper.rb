@@ -3,6 +3,8 @@ require 'date'
 module DateHelper
   def string_to_date(vaccination_day,string)
     case string
+    when 'no'
+      nil
     when 'in 1 week'
       vaccination_day + 7
     when 'in 15 days'
@@ -16,7 +18,7 @@ module DateHelper
     when 'in 1 year'
       vaccination_day.next_year
     else
-      0
+      nil
     end
   end
 
