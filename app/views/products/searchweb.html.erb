@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid justify-content-between">
+    <%= link_to wish_list_path(@wishlist) do %>
+      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
+    <% end %>
+    <h2 class="text-center my-2 heading">Add products</h2>
+    <p></p>
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <div class="mt-5">
+    <% @webproducts.each do |product|%>
+        <div class="card-body my-3 card-product-wishlist">
+          <div class="d-flex justify-content-between align-items-center py-1 px-1">
+            <%= link_to product[:link], target:"_blank" do %>
+              <p class="card-title mb-2"><strong><%= product[:name].capitalize %></strong></p>
+            <% end %>
+
+            <div>
+              <h4 class="card-text m-0"><strong> $<%= product[:price]%></strong></h4>
+            </div>
+            <%= simple_form_for [@wishlist, @product], url: wish_list_webcreate_path, method: :post do |f| %>
+              <%= f.hidden_field :name, value: product[:name] %>
+              <%= f.hidden_field :price, value: product[:price] %>
+              <%= f.hidden_field :url, value: product[:link] %>
+              <%= f.hidden_field :wishlist_id, value: @wishlist.id %>
+              <%= f.submit "Add", class:"btn btn-primary"%>
+            <% end %>
+          </div>
+        </div>
+
+    <% end %>
+  </div>
+</div>

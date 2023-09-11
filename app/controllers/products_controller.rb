@@ -14,6 +14,24 @@ class ProductsController < ApplicationController
     end
   end
 
+  def searchweb
+    keyword = params[:search]
+    @webproducts = PetzService.new(keyword).call
+    @wishlist = WishList.find(params[:wish_list_id])
+    @product = Product.new
+  end
+
+  def webcreate
+    @wishlist = WishList.find(params[:wish_list_id])
+    @product = Product.new(product_params)
+    @product.wish_list = @wishlist
+    if @product.save
+      redirect_to @wishlist
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
