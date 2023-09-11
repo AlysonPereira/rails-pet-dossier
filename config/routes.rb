@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     post "/revaccine", to: "vaccines#revaccine", as: :revaccine
   end
 
+  resources :medicines, only: %i[destroy]
+  resources :vaccines, only: %i[destroy]
   resources :products, only: %i[destroy]
   get 'dossier', to: "pages#dossier"
   get 'landingpage', to: "pages#landingpage"

@@ -13,8 +13,17 @@
 <div class="container mt-2">
   <div class="row">
     <% @medicines.each do |medicine| %>
-      <p class="my-2"><strong>Name: </strong><%= medicine.name %></p>
-      <p class="my-2"><strong>Time/Day: </strong>Every <%= 24 / medicine.period%> hours</p>
+      <div class="card">
+        <div class="d-flex">
+          <div class="p-2 flex-grow-1"><strong>Name: </strong><%= medicine.name %></div>
+          <div class="p-2"><strong>Time/Day: </strong>Every <%= 24 / medicine.period %> hours</div>
+          <div class="p-2">
+            <%= link_to medicine_path(medicine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"dropdown-item" do %>
+              <i class="fa-solid fa-trash-can" style="color: #c30404;"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
