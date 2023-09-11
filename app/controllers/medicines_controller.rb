@@ -1,5 +1,5 @@
 class MedicinesController < ApplicationController
-  before_action :set_pet, only: %i[index new create destroy]
+  before_action :set_pet, only: %i[index new create]
 
   def index
     @medicines = Medicine.where(pet_id: @pet.id).order('start_date DESC')
@@ -19,7 +19,13 @@ class MedicinesController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @medicine = Medicine.find(params[:id])
+    @medicine.destroy
+    redirect_to pet_medicines_path(@medicine.pet_id), notice: 'Medicine was successfully deleted.'
+  end
+
+    private
 
   def medicine_params
     params.require(:medicine).permit(:name, :dosage, :period, :unit, :start_date, :end_date)

@@ -9,7 +9,7 @@
   </div>
 </nav>
 <div class="container">
-  <%= simple_form_for [@pet, @vaccine], url: pet_revaccine_path, method: :post do |f| %>
+  <%= simple_form_for [@pet, @revaccine], url: pet_revaccine_path, method: :post do |f| %>
     <div class="row mt-2">
       <div class="col-12">
         <%= f.input :name, label: 'Name' %>
@@ -21,6 +21,9 @@
       </div>
       <div class="col-6">
         <%= f.input :revaccination_period, collection: Vaccine::PERIOD, label: 'Revaccination' %>
+      </div>
+      <div>
+        <%= f.hidden_field :id, value: @vaccine.id %>
       </div>
     </div>
 
