@@ -28,7 +28,13 @@
           </div>
           <div class="d-flex justify-content-between align-items-center py-1 px-1">
             <i class="fa-solid fa-bone"></i>
-            <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
+            <% unless product.url.nil? %>
+              <%= link_to product.url, target:"_blank" do %>
+                <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
+              <% end %>
+            <% else %>
+              <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
+            <% end %>
             <div>
               <h4 class="card-text m-0"><strong> $<%= product.price %></strong></h4>
               <p class="card-text m-0 text-center"><%= product.local %></p>
@@ -42,3 +48,7 @@
     <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product' %>
   </div>
 </div>
+<%= form_with url: "/wish_lists/#{@wishlist.id}/searchweb", method: :get, class: "d-flex mb-0" do |form| %>
+  <%= form.text_field :search, class: "form-control me-2 col-6", style: "width: 600px", placeholder: "Keyword search..." %>
+  <%= form.submit "Search", class:"btn-primary"%>
+<% end %>
