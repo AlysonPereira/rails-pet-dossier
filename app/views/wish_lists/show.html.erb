@@ -21,23 +21,22 @@
     <% @products.each do |product|%>
 
         <div class="card-body my-3 card-product-wishlist">
-          <div class="text-icone-trash mx-1">
+          <div class="text-icone-trash mx-2" style="position: relative; top: 10px;">
             <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
-              <i class="fa-solid fa-trash-can fa-lg w-100 text-end px-2 my-2"></i>
+              <i class="fa-solid fa-trash-can fa-lg w-100 text-end my-2 text-white"></i>
             <% end %>
           </div>
           <div class="d-flex justify-content-between align-items-center py-1 px-1">
             <i class="fa-solid fa-bone"></i>
             <% unless product.url.nil? %>
-              <%= link_to product.url, target:"_blank" do %>
-                <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
+              <%= link_to product.url, target:"_blank", class: "text-decoration-none" do %>
+                <p class="card-title mb-2"><strong><%=  truncate(product[:name].capitalize, length: 20) %></strong></p>
               <% end %>
             <% else %>
               <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>
             <% end %>
             <div>
-              <h4 class="card-text m-0"><strong> $<%= product.price %></strong></h4>
-              <p class="card-text m-0 text-center"><%= product.local %></p>
+              <h4 class="card-text mx-3"><strong> $ <%= product.price %></strong></h4>
             </div>
           </div>
         </div>
@@ -49,6 +48,8 @@
   </div>
 </div>
 <%= form_with url: "/wish_lists/#{@wishlist.id}/searchweb", method: :get, class: "d-flex mb-0" do |form| %>
-  <%= form.text_field :search, class: "form-control me-2 col-6", style: "width: 600px", placeholder: "Keyword search..." %>
-  <%= form.submit "Search", class:"btn-primary"%>
+  <div class="input-group mx-2">
+    <%= form.text_field :search, class: "form-control mx-1", placeholder: "Product search..." %>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </div>
 <% end %>
