@@ -22,6 +22,7 @@
 </nav>
 
 <div class="container mt-2">
+
   <div class="row">
     <div class="col-12">
       <div class="d-flex justify-content-center">
@@ -34,11 +35,13 @@
     </div>
   </div>
 
+<div class="container">
+<div class="card my-5 card-list ">
   <div class="row mt-2">
-    <div class="col-12">
+    <div class="col-12 mx-3">
       <p class="mb-2">Species: <%= @pet.specie %></strong></p>
       <% unless @pet.breed.blank? %>
-        <p class="my-2">Breed: <strong><%= @pet.breed %></strong></p>
+        <p class="my-2">Breed: <strong><%= @pet.breed.capitalize %></strong></p>
       <% end %>
       <% unless @pet.dob.nil? %>
         <p class="my-1">Age: <strong><%= calculate_age(@pet.dob.to_time) %></strong> years old</p>
@@ -48,6 +51,8 @@
       <% end %>
     </div>
   </div>
+</div>
+</div>
 
   <div class="row m-2 fixed-bottom">
     <div class="col-6 d-grid text-center">
@@ -65,4 +70,3 @@
      </div>
   </div>
 </div>
-
