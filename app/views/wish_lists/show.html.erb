@@ -19,7 +19,7 @@
   </div>
   <div class="mt-5">
     <% @products.each do |product|%>
-      <div class="card-body my-3 card-product-wishlist">
+      <div class="card-body my-4 card-product-wishlist">
         <div class="text-icone-trash mx-2" style="position: relative; top: 10px;">
           <%= link_to product_path(product), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?'} do %>
             <i class="fa-solid fa-trash-can fa-lg w-100 text-end my-2 text-white"></i>
@@ -41,10 +41,10 @@
       </div>
     <% end %>
   </div>
-  <div class="d-flex justify-content-center mb-3">
-    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product' %>
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product m-2' %>
   </div>
-   <div class="d-flex justify-content-center mb-3">
-    <%= link_to 'Add products web', wish_list_search_path(@wishlist), class: 'btn-product' %>
+   <div class="d-flex justify-content-center">
+    <%= link_to 'Add products web', wish_list_search_path(@wishlist), class: 'btn-product m-2' %>
   </div>
 </div>
