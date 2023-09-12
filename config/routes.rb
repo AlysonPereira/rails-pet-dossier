@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :medicines, only: %i[index new create]
     resources :vaccines, only: %i[index new create edit]
     post "/revaccine", to: "vaccines#revaccine", as: :revaccine
+    post "/finish", to: "medicines#finish", as: :finish
   end
 
   resources :medicines, only: %i[destroy]

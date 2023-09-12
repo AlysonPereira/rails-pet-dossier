@@ -19,6 +19,14 @@ class MedicinesController < ApplicationController
     end
   end
 
+  def finish
+    @medicine = Medicine.find(params[:medicine][:id])
+    @medicine.end_treatment = true
+    if @medicine.save!
+      redirect_to pet_medicines_path(@medicine.pet_id), notice: 'Treatment was successfully finished.'
+    end
+  end
+
   def destroy
     @medicine = Medicine.find(params[:id])
     @medicine.destroy
