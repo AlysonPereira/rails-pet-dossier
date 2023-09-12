@@ -9,25 +9,27 @@
 
 </nav>
 <div class="container mt-2">
-  <div class="mt-5">
+  <div class="mt-2">
     <% @webproducts.each do |product|%>
-      <div class="card-body card my-3 card-web ">
-        <div class="d-flex justify-content-between align-items-center py-1 px-1">
-          <%= link_to product[:link], target:"_blank", class: "text-decoration-none" do %>
-            <p class="card-title mb-2 text-web"><strong><%= truncate(product[:name].capitalize.gsub('.', ' '), length: 30) %></strong></p>
-          <% end %>
-          <div>
-            <h4 class="card-text mx-2"> $<%= product[:price]%></h4>
+      <div class="card-body my-3 card-web ">
+        <div class="d-flex align-items-center py-1 px-1">
+          <div class="p-2 flex-grow-1">
+            <%= link_to product[:link], target:"_blank", class: "text-decoration-none" do %>
+              <p class="card-title mb-2 text-web"><strong><%= truncate(product[:name].capitalize.gsub('.', ' '), length: 20) %></strong></p>
+            <% end %>
           </div>
-          <%= simple_form_for [@wishlist, @product], url: wish_list_webcreate_path, method: :post do |f| %>
-            <%= f.hidden_field :name, value: product[:name] %>
-            <%= f.hidden_field :price, value: product[:price] %>
-            <%= f.hidden_field :url, value: product[:link] %>
-            <%= f.hidden_field :wishlist_id, value: @wishlist.id %>
-            <div class="d-flex justify-content-end">
-              <%= f.submit "Add", class: "btn btn-primary mx-2" %>
-            </div>
-          <% end %>
+          <div class="p-2">
+            <h4 class="card-text"> $<%= product[:price]%></h4>
+          </div>
+          <div class="p-1">
+            <%= simple_form_for [@wishlist, @product], url: wish_list_webcreate_path, method: :post do |f| %>
+              <%= f.hidden_field :name, value: product[:name] %>
+              <%= f.hidden_field :price, value: product[:price] %>
+              <%= f.hidden_field :url, value: product[:link] %>
+              <%= f.hidden_field :wishlist_id, value: @wishlist.id %>
+              <%= f.submit "Add", class: "btn btn-sm btn-primary" %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>

@@ -12,7 +12,7 @@
 
   <%= form_with url: "/wish_lists/#{@wishlist.id}/searchweb", method: :get, class: "d-flex mb-0 my-5" do |form| %>
     <div class="input-group mx-2">
-      <%= form.text_field :search, class: "form-control mx-1", placeholder: "Search a product in the web..." %>
+      <%= form.text_field :search, required: true, class: "form-control mx-1", placeholder: "Search a product in the web..." %>
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
   <% end %>
@@ -21,4 +21,3 @@
 <div class="img-search d-flex justify-content-center  fixed-bottom">
   <%= image_tag "search-dog.png" %>
 </div>
-
