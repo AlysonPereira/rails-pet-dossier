@@ -29,7 +29,7 @@
           <i class="fa-solid fa-bone"></i>
           <% unless product.url.nil? %>
             <%= link_to product.url, target:"_blank", class: "text-decoration-none" do %>
-              <p class="card-title mb-2"><strong><%=  truncate(product[:name].capitalize, length: 20) %></strong></p>
+              <p class="card-title mb-2"><strong><%=  truncate(product[:name].capitalize.gsub('.', ' '), length: 20) %></strong></p>
             <% end %>
           <% else %>
             <p class="card-title mb-2"><strong><%= product.name.capitalize %></strong></p>

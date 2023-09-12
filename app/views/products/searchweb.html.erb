@@ -3,7 +3,7 @@
     <%= link_to wish_list_search_path(@wishlist) do %>
       <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
     <% end %>
-    <h2 class="text-center my-2 heading">Back to search</h2>
+    <h2 class="text-center my-2 heading">Search products</h2>
     <p></p>
   </div>
 
@@ -11,10 +11,10 @@
 <div class="container mt-2">
   <div class="mt-5">
     <% @webproducts.each do |product|%>
-      <div class="card-body card my-3 ">
+      <div class="card-body card my-3 card-web ">
         <div class="d-flex justify-content-between align-items-center py-1 px-1">
           <%= link_to product[:link], target:"_blank", class: "text-decoration-none" do %>
-            <p class="card-title mb-2"><strong><%= truncate(product[:name].capitalize.gsub('.', ' '), length: 30) %></strong></p>
+            <p class="card-title mb-2 text-web"><strong><%= truncate(product[:name].capitalize.gsub('.', ' '), length: 30) %></strong></p>
           <% end %>
           <div>
             <h4 class="card-text mx-2"> $<%= product[:price]%></h4>
@@ -25,7 +25,7 @@
             <%= f.hidden_field :url, value: product[:link] %>
             <%= f.hidden_field :wishlist_id, value: @wishlist.id %>
             <div class="d-flex justify-content-end">
-              <%= f.submit "Add", class: "btn btn-primary mx-2" %> 
+              <%= f.submit "Add", class: "btn btn-primary mx-2" %>
             </div>
           <% end %>
         </div>
