@@ -44,10 +44,7 @@
   <div class="d-flex justify-content-center mb-3">
     <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product' %>
   </div>
-</div>
-<%= form_with url: "/wish_lists/#{@wishlist.id}/searchweb", method: :get, class: "d-flex mb-0" do |form| %>
-  <div class="input-group mx-2">
-    <%= form.text_field :search, class: "form-control mx-1", placeholder: "Product search..." %>
-    <button type="submit" class="btn btn-primary">Search</button>
+   <div class="d-flex justify-content-center mb-3">
+    <%= link_to 'Add products web', wish_list_search_path(@wishlist), class: 'btn-product' %>
   </div>
-<% end %>
+</div>

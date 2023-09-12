@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   resources :wish_lists do
     resources :products, only: %i[new create]
+    get '/search', to: "products#search", as: :search
     get "/searchweb", to: "products#searchweb", as: :searchweb
     post "/webcreate", to: "products#webcreate", as: :webcreate
   end
