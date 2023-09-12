@@ -42,9 +42,7 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
-    <%= link_to 'Add more products', new_wish_list_product_path(@wishlist), class: 'btn-product m-2' %>
-  </div>
-   <div class="d-flex justify-content-center">
-    <%= link_to 'Add products web', wish_list_search_path(@wishlist), class: 'btn-product m-2' %>
+    <%= link_to 'Add products', new_wish_list_product_path(@wishlist), class: 'btn-product m-2' %>
+    <%= link_to 'Search the web', wish_list_search_path(@wishlist), class: 'btn-product m-2' %>
   </div>
 </div>

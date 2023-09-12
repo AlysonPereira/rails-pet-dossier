@@ -1,15 +1,14 @@
 
 <div class="container">
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid justify-content-between">
-    <%= link_to wish_list_path(@wishlist) do %>
-      <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
-    <% end %>
-    <h2 class="text-center my-2 heading">Back to products</h2>
-    <p></p>
-  </div>
-
-</nav>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid justify-content-between">
+      <%= link_to wish_list_path(@wishlist) do %>
+        <i class="fa-solid fa-arrow-left-long fa-lg heading"></i>
+      <% end %>
+      <h2 class="text-center my-2 heading">Product search</h2>
+      <p></p>
+    </div>
+  </nav>
 
   <%= form_with url: "/wish_lists/#{@wishlist.id}/searchweb", method: :get, class: "d-flex mb-0" do |form| %>
     <div class="input-group mx-2">
@@ -17,4 +16,4 @@
       <button type="submit" class="btn btn-primary">Search</button>
     </div>
   <% end %>
-</div>  
+</div>
