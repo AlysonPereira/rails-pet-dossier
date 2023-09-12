@@ -3,7 +3,7 @@ class PetzService
   require 'open-uri'
 
   def initialize(keyword)
-    @keyword = keyword
+    @keyword = I18n.transliterate(keyword)
   end
 
   def call
