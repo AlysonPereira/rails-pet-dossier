@@ -33,7 +33,7 @@
             <%= simple_form_for (medicine), url: pet_finish_path, method: :post do |f| %>
               <%= f.hidden_field :id, value: medicine.id %>
               <div class="d-flex justify-content-end">
-                <%= f.submit "End treatment", class: "btn btn-primary mx-2" %>
+                <%= f.submit "End treatment", class: "btn btn-sm btn-primary mx-2" %>
               </div>
             <% end %>
           </div>
