@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_wishlist, only: %i[new create]
+  before_action :set_wishlist, only: %i[new create search]
   def new
     @product = Product.new
   end
@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  def search; end
 
   def searchweb
     keyword = params[:search]
