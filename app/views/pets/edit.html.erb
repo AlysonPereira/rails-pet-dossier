@@ -35,6 +35,11 @@
                               html5: true, placeholder: "Date of birth", input_html: { max: Date.today.to_s } %>
       </div>
     </div>
+    <div class="row mb-3">
+      <div class="col-md-12 mt-3 mt-md-0">
+        <%= f.input :image, as: :file, label: 'Upload a new photo 📷'  %>
+      </div>
+     </div>
     <div class="row">
       <div class="d-grid gap-2">
         <%= f.submit class:"btn btn-primary" %>

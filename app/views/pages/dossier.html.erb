@@ -9,57 +9,71 @@
 </nav>
 
 <div class="container">
-  <h3>Vaccines:</h3>
-  <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr class="table-title">
-        <th>Pet Name</th>
-        <th>Vaccine Name</th>
-        <th>Vaccination Date</th>
-        <th>Next Vaccination</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @vaccines.each do |vaccine| %>
-      <% pet = Pet.find(vaccine.pet_id) %>
-        <tr>
-          <td><%= pet.name %></td>
-          <td><%= vaccine.name %></td>
-          <td class="text-table"><%= vaccine.vaccination_date.strftime("%d/%m/%Y") %></td>
-          <td class="text-table"><%= vaccine.next_vaccination %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
 
+  <h3 class="text-center">Upcoming vaccines</h3>
   <div class="table-responsive">
-  <h3>Medicines:</h3>
-  <table class="table table-striped">
-    <thead>
-      <tr class="table-title">
-        <th>Pet Name</th>
-        <th>Medicine Name</th>
-        <th>Dosage</th>
-        <th>Period</th>
-        <th>Start Date</th>
-        <th>End Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @medicines.each do |medicine| %>
-      <% pet = Pet.find(medicine.pet_id) %>
-        <tr>
-          <td><%= pet.name %></td>
-          <td><%= medicine.name %></td>
-          <td><%= medicine.dosage %> <%= medicine.unit %></td>
-          <td><%= medicine.period %>/day</td>
-          <td class="text-table"><%= medicine.start_date.strftime("%d/%m/%Y") %></td>
-          <td class="text-table"><%= medicine.end_date.strftime("%d/%m/%Y") %></td>
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-title">
+          <th>Pet</th>
+          <th>Vaccine</th>
+          <th>Next Dose</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% unless @vaccines == [] %>
+          <% @vaccines.each do |vaccine| %>
+            <% pet = Pet.find(vaccine.pet_id) %>
+            <tr>
+              <td><%= pet.name %></td>
+              <td><%= vaccine.name %></td>
+              <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
+                <td>in <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> day(s) </td>
+              <% else %>
+                <td><span class=" text-danger"><strong><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> day(s) late</strong></span></div>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="3" class="text-center">No upcoming vaccines</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="text-center">Current medicines</h3>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr class="table-title">
+          <th>Pet</th>
+          <th>Medicine</th>
+          <th>Dosage</th>
+          <th>Period</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% unless @medicines == [] %>
+          <% @medicines.each do |medicine| %>
+          <% pet = Pet.find(medicine.pet_id) %>
+            <tr>
+              <td><%= pet.name %></td>
+              <td><%= medicine.name %></td>
+              <td><%= medicine.dosage %> <%= medicine.unit %></td>
+              <td><%= medicine.period %>/day</td>
+              <td><%= (medicine.end_date - medicine.start_date + 1).to_i %> days</td>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="6" class="text-center">No current medicines</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 </div>

@@ -15,14 +15,29 @@
     <% @medicines.each do |medicine| %>
       <div class="card">
         <div class="d-flex">
-          <div class="p-2 flex-grow-1"><strong>Name: </strong><%= medicine.name %></div>
-          <div class="p-2"><strong>Time/Day: </strong>Every <%= 24 / medicine.period %> hours</div>
+          <div class="p-2 flex-grow-1"><strong><%= medicine.name.capitalize %></strong></div>
+          <div class="p-2">Start Date: <%= medicine.start_date.strftime("%b-%d-%Y") %></div>
           <div class="p-2">
             <%= link_to medicine_path(medicine), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class:"dropdown-item" do %>
               <i class="fa-solid fa-trash-can" style="color: #c30404;"></i>
             <% end %>
           </div>
         </div>
+        <div class="d-flex">
+          <div class="p-2 flex-grow-1">Dosage: <%= medicine.dosage %> <%= medicine.unit %></div>
+          <div class="p-2">End Date: <%= medicine.end_date.strftime("%b-%d-%Y") %></div>
+        </div>
+        <% unless medicine.end_treatment %>
+          <div class="d-flex">
+            <div class="p-2 flex-grow-1">Every <strong><%= 24 / medicine.period %></strong> hours</div>
+            <%= simple_form_for (medicine), url: pet_finish_path, method: :post do |f| %>
+              <%= f.hidden_field :id, value: medicine.id %>
+              <div class="d-flex justify-content-end">
+                <%= f.submit "End treatment", class: "btn btn-primary mx-2" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
