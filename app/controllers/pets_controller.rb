@@ -2,7 +2,8 @@ class PetsController < ApplicationController
   before_action :set_pet, only: %i[show edit update destroy]
 
   def index
-    @pets = Pet.all
+    # Find all the pets that belong to the current user
+    @pets = current_user.pets
   end
 
   def new

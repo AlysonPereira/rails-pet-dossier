@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   resources :products, only: %i[destroy]
   get 'dossier', to: "pages#dossier"
   get 'landingpage', to: "pages#landingpage"
+  get 'find-petshop', to: "pages#find-petshop"
 end

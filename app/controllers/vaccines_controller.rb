@@ -3,7 +3,7 @@ class VaccinesController < ApplicationController
   before_action :set_vaccine, only: %i[edit destroy]
 
   def index
-    @vaccines = Vaccine.where(pet_id: @pet.id).order('next_vaccination ASC')
+    @vaccines = Vaccine.where(pet_id: @pet.id).order('vaccination_date DESC')
   end
 
   def new

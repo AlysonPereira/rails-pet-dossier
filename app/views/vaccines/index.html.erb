@@ -33,7 +33,9 @@
                   <div class="p-2"><span class=" text-danger"><strong><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> day(s) late</strong></span></div>
                 <% end %>
               </div>
-              <%= link_to "Revaccinated", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id), class:"p-2 text-end"%>
+              <div class="d-flex justify-content-end my-2">
+                <%= link_to "Revaccinated", edit_pet_vaccine_path(pet_id: @pet.id, id: vaccine.id), class:"btn btn-sm btn-primary mx-2"%>
+              </div>
             <% end %>
           <% end %>
         </div>
