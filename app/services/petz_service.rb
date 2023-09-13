@@ -12,6 +12,7 @@ class PetzService
 
     # 2. We build a Nokogiri document from this file
     doc = Nokogiri::HTML.parse(html_content)
+    html_content.close
 
     url = "https://www.petz.com.br"
 
