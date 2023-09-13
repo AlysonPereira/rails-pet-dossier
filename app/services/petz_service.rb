@@ -8,11 +8,13 @@ class PetzService
 
   def call
     # 1. We get the HTML page content thanks to open-uri
-    html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}")
-
-    # 2. We build a Nokogiri document from this file
-    doc = Nokogiri::HTML.parse(html_content)
-    html_content.close
+    begin
+      html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}")
+      # 2. We build a Nokogiri document from this file
+      doc = Nokogiri::HTML.parse(html_content)
+    ensure
+      html_content.close
+    end
 
     url = "https://www.petz.com.br"
 
