@@ -2,7 +2,8 @@ class WishListsController < ApplicationController
   before_action :set_wishlist, only: %i[show destroy edit update]
 
   def index
-    @wishlists = WishList.all
+    # Get all the wishlists that belong to the current user
+    @wishlists = current_user.wish_lists
   end
 
   def new
