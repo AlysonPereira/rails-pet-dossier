@@ -12,8 +12,9 @@ class PetzService
       html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}")
       # 2. We build a Nokogiri document from this file
       doc = Nokogiri::HTML.parse(html_content)
-    ensure
-      html_content.close
+    rescue OpenURI::HTTPError => e
+      puts "PetzService: #{e.message}"
+      return []
     end
 
     url = "https://www.petz.com.br"
