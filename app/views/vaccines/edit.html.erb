@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-6">
-        <%= f.input :vaccination_date, html5: :true, label: 'Vaccination Date', input_html: { value: converted_date(Time.zone.now, @vaccine.revaccination_period) } %>
+        <%= f.input :vaccination_date, html5: :true, label: 'Vaccination Date', input_html: { value: Time.zone.now.strftime("%Y-%m-%d") } %>
       </div>
       <div class="col-6">
         <%= f.input :revaccination_period, collection: Vaccine::PERIOD, label: 'Revaccination' %>
