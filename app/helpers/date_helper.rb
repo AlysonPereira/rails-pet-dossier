@@ -1,3 +1,5 @@
+require 'date'
+
 module DateHelper
   def string_to_date(vaccination_day,string)
     case string
@@ -16,5 +18,11 @@ module DateHelper
     else
       0
     end
+  end
+
+  def converted_date(vaccination_date, period)
+    date_string = string_to_date(vaccination_date, period)
+    # Formata a data no formato "dd/mm/aaaa"
+    date_string.strftime("%Y-%m-%d")
   end
 end
