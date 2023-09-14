@@ -29,7 +29,11 @@
         </div>
         <% unless medicine.end_treatment %>
           <div class="d-flex">
-            <div class="p-2 flex-grow-1">Every <strong><%= 24 / medicine.period %></strong> hours</div>
+            <% if medicine.period == 0 %>
+                <div class="p-2 flex-grow-1"><strong>Single dose</strong></div>
+            <% else %>
+              <div class="p-2 flex-grow-1">Every <strong><%= 24 / medicine.period %></strong> hours</div>
+            <% end %>
             <%= simple_form_for (medicine), url: pet_finish_path, method: :post do |f| %>
               <%= f.hidden_field :id, value: medicine.id %>
               <div class="d-flex justify-content-end">
