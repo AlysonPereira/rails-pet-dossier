@@ -19,7 +19,7 @@ class PetzService
     #   puts "PetzService: #{e.message}"
     #   return []
     # end
-    html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
+    html_content = URI.open("https://www.royalpets.com.br/busca?ft=#{@keyword}", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
     doc = Nokogiri::HTML.parse(html_content)
     # uri = URI("https://www.petz.com.br/busca?q=#{@keyword}")
     # req = Net::HTTP::Get.new(uri.path)
@@ -30,15 +30,24 @@ class PetzService
     #   https.request(req)
     # end
     # doc = Nokogiri::HTML(URI.parse(("https://www.petz.com.br/busca?q=#{@keyword}")).open)
-    url = "https://www.petz.com.br"
+    # url = "https://www.petz.com.br"
+
     array = []
     # 3. We search for the correct elements containing the items' title in our HTML doc
-    doc.search('.card-product a').each_with_index do |e, _index|
-      link_t = url + e["href"]
+    # doc.search('.card-product a').each_with_index do |e, _index|
+    #   link_t = url + e["href"]
+    #   product = {}
+    #   product.store(:name, e["data-nomeproduto"])
+    #   product.store(:price, e["data-precoproduto"].to_f)
+    #   product.store(:link, link_t)
+    #   array.push(product)
+    # end
+    doc.search('.shelf-item').each_with_index do |e, _index|
+      # link_t = url + e["href"]
       product = {}
-      product.store(:name, e["data-nomeproduto"])
-      product.store(:price, e["data-precoproduto"].to_f)
-      product.store(:link, link_t)
+      product.store(:name, e.attribute_nodes[1].value)
+      product.store(:price, e.children[13].children.text.gsub(' R$', "").to_f)
+      product.store(:link, e.children[21].children[1].attribute_nodes[1].value)
       array.push(product)
     end
 
