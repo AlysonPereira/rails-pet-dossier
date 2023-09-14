@@ -1,6 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
+require 'openssl'
 
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 class PetzService
   def initialize(keyword)
     @keyword = I18n.transliterate(keyword)
@@ -16,15 +18,16 @@ class PetzService
     #   puts "PetzService: #{e.message}"
     #   return []
     # end
-    html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}") { |f| f.read}
-    doc = Nokogiri::HTML.parse(html_content)
-    # doc = Nokogiri::HTML(URI.parse(("https://www.petz.com.br/busca?q=#{@keyword}")).open)
+    # html_content = URI.open("https://www.petz.com.br/busca?q=#{@keyword}") { |f| f.read}
+    # doc = Nokogiri::HTML.parse(html_content)
+
+    doc = Nokogiri::HTML(URI.parse(("https://www.petz.com.br/busca?q=#{@keyword}")).open)
     url = "https://www.petz.com.br"
     array = []
     # 3. We search for the correct elements containing the items' title in our HTML doc
     doc.search('.card-product a').each_with_index do |e, _index|
       link_t = url + e["href"]
-      product = {}  
+      product = {}
       product.store(:name, e["data-nomeproduto"])
       product.store(:price, e["data-precoproduto"].to_f)
       product.store(:link, link_t)
