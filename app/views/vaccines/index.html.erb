@@ -28,7 +28,7 @@
               <div class="d-flex">
                 <div class="p-2 flex-grow-1">Next Dose: <%= vaccine.next_vaccination.strftime("%b-%d-%Y") %></div>
                 <% if ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i >= 0 %>
-                  <div class="p-2">in <%= ((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i %> day(s)</div>
+                  <div class="p-2">in <%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days) + 1).to_i %> day(s)</div>
                 <% else %>
                   <div class="p-2"><span class=" text-danger"><strong><%= (((string_to_date(vaccine.vaccination_date, vaccine.revaccination_period).to_time - Time.zone.now.to_time) / 1.days).to_i) * (-1)  %> day(s) late</strong></span></div>
                 <% end %>
