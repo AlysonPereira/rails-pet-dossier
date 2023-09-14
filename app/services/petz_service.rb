@@ -1,7 +1,7 @@
-class PetzService
-  require 'nokogiri'
-  require 'open-uri'
+require 'nokogiri'
+require 'open-uri'
 
+class PetzService
   def initialize(keyword)
     @keyword = I18n.transliterate(keyword)
   end
