@@ -28,7 +28,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
- gem "redis", "~> 4.7"
+ gem "redis", "~> 4.7.1"
 
 gem "nokogiri"
 
