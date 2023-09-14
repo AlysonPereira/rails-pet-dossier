@@ -22,7 +22,6 @@ class PetzService
     array = []
     # 3. We search for the correct elements containing the items' title in our HTML doc
     doc.search('.card-product a').each_with_index do |e, _index|
-
       link_t = url + e["href"]
       product = {}
       product.store(:name, e["data-nomeproduto"])
